@@ -4,543 +4,381 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 3 — Identify Your Defaults | Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -553,122 +391,163 @@ body {
   </nav>
 
   <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
+    <div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div>
   </div>
 
   <div class="hero fade f2">
     <div class="hero-phase ">Phase I — Stabilize</div>
     <h1 class="hero-title">Identify<br>Your Defaults</h1>
-    <p class="hero-intro">You've set a direction and built a structure. But there's something else running in the background — habits, reactions, and patterns you've repeated so often you don't even notice them anymore.</p>
+    <p class="hero-intro">You've set a direction and built a structure. But there's something else running in the background — an older system, assembled over years, made up of habits, reactions, and patterns you've repeated so often you don't even notice them anymore. Today, you see them.</p>
   </div>
 
   <div class="principle  fade f3">
     <div class="principle-label ">The Law of Habit</div>
-      <p>Almost everything you do is the result of habit. Your habits have brought you to where you are today — and they will take you to where you end up tomorrow.</p>
-      <p>The first step to changing a pattern is <strong>seeing it clearly</strong>.</p>
+    
+    <p>Almost everything you do is the result of habit. From the moment you wake up to the moment you fall asleep, the vast majority of your actions are not conscious choices — they are automated patterns that run without your awareness.</p>
+    <p>Your habits have brought you to exactly where you are today. And if left unchanged, they will take you to the same place tomorrow, next month, and next year.</p>
+    <p>This is neither good nor bad — it's <strong>mechanical</strong>. Habits are tools. The question is whether you chose them deliberately or inherited them by accident. Today, you find out which is which.</p>
   </div>
 
-  <main class="lesson-content">
+  <main class="fade f4">
+    
+    <h2 class="section-title">You were already running a system</h2>
 
-    <h2 class="section-title">Your invisible operating system</h2>
-    <p class="prose">Before today, you were already running a system. It just wasn't one you designed. It was assembled over years — from upbringing, environment, repeated choices, and things you drifted into without thinking.</p>
-    <p class="prose">These defaults run silently. Checking your phone first thing in the morning. Saying yes to things you don't have time for. Staying up too late because you didn't close the day properly. Starting work on whatever feels easiest instead of what matters most.</p>
-    <p class="prose">None of these are character flaws. They're just <strong>patterns that were never examined</strong>. And patterns that go unexamined continue running indefinitely.</p>
+    <p class="prose">Before Day 1 of this program, you weren't operating without a system. You were operating on an <em>unexamined</em> system — one that was assembled over years from upbringing, environment, repeated choices, social influence, and things you drifted into without ever consciously deciding.</p>
 
-    <h2 class="section-title">How to map your defaults</h2>
-    <p class="prose">This isn't therapy. It's a diagnostic. You're looking at your behavior over the past week — honestly — and identifying the patterns that are either helping or hurting your direction.</p>
-    <p class="prose">Look at three areas:</p>
-    <p class="prose"><strong>Time defaults</strong> — where does your time actually go? Not where you think it goes. What do you do in the gaps between tasks? What pulls you off course most often?</p>
-    <p class="prose"><strong>Energy defaults</strong> — what drains you that you keep doing anyway? What recharges you that you rarely prioritize?</p>
-    <p class="prose"><strong>Decision defaults</strong> — what do you say yes to automatically? What do you avoid or postpone? Where do you repeatedly choose comfort over progress?</p>
+    <p class="prose">This invisible system includes everything: what time you wake up, how you start your day, how you respond to stress, what you eat, how you spend your evenings, what you do when you're bored, what you avoid, what you say yes to automatically, how you talk to yourself when things go wrong.</p>
+
+    <p class="prose">None of these patterns are random. Each one was installed at some point — either through repetition, imitation, or emotional reinforcement. And each one is producing results in your life right now, whether you're aware of it or not.</p>
+
+    <p class="prose">This is the Law of Cause and Effect playing out at the behavioral level. Your current results — your health, your productivity, your relationships, your financial situation — are the effects. Your daily habits are the causes. <strong>Change the causes and the effects have no choice but to follow.</strong></p>
+
+    <p class="prose">But you can't change what you can't see. And most people have never stopped to honestly catalog the patterns running their daily life. Today, you do exactly that.</p>
+
+    <h2 class="section-title">Why this is a diagnostic, not therapy</h2>
+
+    <p class="prose">Let's be clear about what this is. You're not analyzing your childhood or exploring the emotional roots of your behavior. You're running a diagnostic — a cold, honest assessment of what you actually do on a typical day versus what you think you do.</p>
+
+    <p class="prose">These two things are almost never the same. Most people dramatically overestimate how much time they spend on productive activities and dramatically underestimate how much time leaks into distraction, avoidance, and low-value behavior. Studies on time perception consistently show that people's estimates of how they spend their day are off by 2–3 hours in either direction.</p>
+
+    <p class="prose">This isn't a moral failing. It's a feature of how the brain works. Habitual behavior becomes invisible precisely because it's habitual — your brain has automated it to save processing power. Checking your phone, scrolling social media, snacking when you're not hungry, saying yes to requests you should decline — these happen on autopilot. You don't experience them as choices because they stopped being choices a long time ago.</p>
+
+    <p class="prose">The diagnostic makes the invisible visible again. Once you see a pattern clearly, you have a choice about it. Before you see it, you don't.</p>
+
+    <h2 class="section-title">Three categories of defaults</h2>
+
+    <p class="prose">Your defaults fall into three categories. Map each one honestly.</p>
+
+    <p class="prose"><strong>Time defaults — where your time actually goes.</strong> Not where you think it goes. Not where you'd like it to go. Where it actually goes when you're not paying attention. The gaps between tasks. The transitions. The moments when you pick up your phone "for a second" and lose 20 minutes. The evenings that evaporate into scrolling or watching something you didn't plan to watch.</p>
+
+    <p class="prose">Here's a simple test: take your phone right now and look at your screen time data from the past week. Compare the number you see to the number you would have guessed. For most people, there's a significant gap. That gap is a time default in action.</p>
+
+    <p class="prose"><strong>Energy defaults — what drains you and what charges you.</strong> Some activities, people, and environments leave you feeling more capable and alive after engaging with them. Others leave you depleted, irritable, or foggy. Your energy defaults determine which ones you gravitate toward by habit.</p>
+
+    <p class="prose">Pay attention to the pattern, not the intention. You might intend to exercise after work, but if your energy default after a long day is to collapse on the couch and scroll, the default wins. You might intend to spend the weekend on a personal project, but if your energy default is social obligation, the project never happens.</p>
+
+    <p class="prose"><strong>Decision defaults — what you say yes and no to automatically.</strong> Everyone has a pattern in how they handle decisions, requests, and opportunities. Some people default to "yes" — they accept every invitation, take on every task, and agree to every favor, leaving no room for their own priorities. Others default to avoidance — they postpone difficult conversations, delay important decisions, and choose the easiest option regardless of whether it's the right one.</p>
+
+    <div class="callout">
+      <p><strong>A critical distinction:</strong> Defaults are not character flaws. They're not evidence that something is wrong with you. They're simply patterns — automated responses that were installed through repetition. You installed most of them unconsciously, which means you can <em>uninstall</em> them deliberately. But only after you've identified them with precision.</p>
+    </div>
+
+    <h2 class="section-title">How to map your defaults honestly</h2>
+
+    <p class="prose">The key word is honestly. This exercise only works if you describe what you actually do — not what you wish you did or what you do on your best days. You're looking for the patterns that show up on a <em>typical</em> day, especially on the days when you're not being particularly intentional.</p>
 
     <div class="example weak">
       <div class="example-tag">Surface level</div>
-      <blockquote>"I sometimes procrastinate and I'm not great with time."</blockquote>
+      <blockquote>"I sometimes procrastinate and I'm not great with time management."</blockquote>
+      <p class="example-note">This is too vague to act on. It describes a feeling, not a pattern. You can't fix "sometimes procrastinate" — you can only fix specific, identified behaviors.</p>
     </div>
 
     <div class="example strong">
       <div class="example-tag">Honest and specific</div>
-      <blockquote>"I check social media within 5 minutes of waking up. I default to easy tasks first. I say yes to social plans even when I'm behind on priorities."</blockquote>
+      <blockquote>"I check my phone within 5 minutes of waking up — usually Instagram first, then email. I default to easy tasks when I start working because they feel productive. I say yes to social plans even when I'm behind on priorities because I don't want to disappoint people. I stay up past midnight because I feel like the evening is 'my time' even though it ruins my morning."</blockquote>
+      <p class="example-note">Every item here is specific, observable, and actionable. You can see exactly where the pattern conflicts with the direction and structure you've built.</p>
     </div>
 
-    <p class="prose">The specific version gives you something to work with. The vague version just makes you feel bad. Specificity is the point.</p>
+    <p class="prose">The specific version gives you targets. The vague version just makes you feel bad about yourself. Specificity is the entire point of this exercise.</p>
 
+    <h2 class="section-title">Connecting defaults to direction</h2>
 
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
+    <p class="prose">Once you've mapped your defaults, the final step is connecting them to your Day 1 direction. Not every default is a problem. Some of your automated patterns may actually support your direction. The ones you're looking for are the defaults that <strong>directly conflict</strong> with where you're trying to go.</p>
 
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 4.</p>
+    <p class="prose">If your direction includes "I complete my top priorities before noon" but your time default is starting with easy tasks and checking email repeatedly — that's a direct conflict. If your direction includes "I follow a consistent daily structure" but your decision default is saying yes to every request that comes in — that's a direct conflict.</p>
 
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">List your top 5 time defaults</div>
-        <div class="task-desc">Where does your time actually go during a typical day? Be specific. Include the unconscious patterns — scrolling, snacking, avoiding, overplanning.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Identify your top 3 energy drains</div>
-        <div class="task-desc">What regularly drains your energy that you keep doing anyway? People, activities, habits, or environments.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Name your top 3 avoidance patterns</div>
-        <div class="task-desc">What do you consistently postpone, dodge, or put off? What does your resistance look like when it shows up?</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Mark which defaults conflict with your direction</div>
-        <div class="task-desc">Look at your Day 1 direction statement. Which of the patterns you just identified are actively working against it? Circle them. These are your targets.</div>
-      </div>
-    </div>
-
-
-    <div class="closing  fade f8">
-    <p>Today wasn't about fixing anything. It was about seeing clearly.</p>
-    <p>You can't redesign a system you haven't mapped. Now you know what's been running in the background — and which patterns are pulling you away from your direction.</p>
-    <p><strong>Tomorrow, you build the antidote: the non-negotiable behaviors that hold your system together no matter what.</strong></p>
-    </div>
-
+    <p class="prose">Mark these conflicts clearly. They're not all going to be addressed today — that's what the rest of the program is for. But you need to see them now, because awareness is the prerequisite for every change that follows.</p>
   </main>
+
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
+
+  <div class="fade f7">
+    <h2 class="tasks-title">What to do today</h2>
+    <p class="tasks-subtitle">Complete all tasks before moving to Day 4.</p>
+  </div>
+
+  
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
+    </div>
+    <div class="task-content">
+      <div class="task-name">List your top 5 time defaults</div>
+      <div class="task-desc">Where does your time actually go during a typical day? Include the unconscious patterns — scrolling, snacking, overplanning, unnecessary browsing. Check your phone's screen time data for real numbers. Be brutally honest.</div>
+      <span class="task-hint">Focus on the gaps: what do you do in the spaces between planned activities?</span>
+    </div>
+  </div>
+
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
+    </div>
+    <div class="task-content">
+      <div class="task-name">List your top 3 energy drains</div>
+      <div class="task-desc">What regularly drains your energy that you keep doing anyway? These could be people, activities, environments, habits, or commitments. For each one, note whether you actively chose it or drifted into it.</div>
+      
+    </div>
+  </div>
+
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
+    </div>
+    <div class="task-content">
+      <div class="task-name">List your top 3 decision defaults</div>
+      <div class="task-desc">What do you consistently say yes to that you shouldn't? What do you avoid or postpone? What does your resistance pattern look like when it shows up — do you distract, rationalize, or numb?</div>
+      
+    </div>
+  </div>
+
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
+    </div>
+    <div class="task-content">
+      <div class="task-name">Mark which defaults conflict with your direction</div>
+      <div class="task-desc">Open your Day 1 direction statement. Read each default you've identified. For each one, honestly ask: does this help my direction, harm it, or have no effect? Circle every one that actively works against your direction. These are your targets.</div>
+      
+    </div>
+  </div>
+
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
+    </div>
+    <div class="task-content">
+      <div class="task-name">Choose the one default that costs you the most</div>
+      <div class="task-desc">Of all the defaults you've identified, which single one creates the most damage to your direction and structure? Name it. You're not fixing it today — but you need to know what it is. Tomorrow's lesson is the antidote.</div>
+      
+    </div>
+  </div>
+
+  <div class="closing  fade f8">
+    
+    <p>Today wasn't about fixing anything. It was about seeing clearly. You can't redesign a system you haven't mapped, and now you have a clear inventory of the automated patterns running your daily behavior.</p>
+    <p>Some of what you found probably surprised you. Some of it you already knew but hadn't admitted. Both reactions are normal and both are useful — because now it's written down, visible, and no longer running in the background unexamined.</p>
+    <p>Tomorrow, you build the direct antidote to your most destructive defaults: non-negotiable behaviors that hold your system together regardless of mood, energy, or circumstances. These are the behavioral anchors that ensure your structure survives even when your defaults try to pull you off course.</p>
+    <p><strong>Look at your list tonight. Let it sit. Tomorrow, you start replacing.</strong></p>
+  </div>
+
 
   <a href="day-04.html" class="next fade f9">
     <div>
@@ -679,7 +558,8 @@ body {
   </a>
 
   <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
+    
+    <span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Reconstruct</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>

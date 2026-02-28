@@ -1,677 +1,412 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 15 — Build Your Accountability Layer | Structured Achievement</title>
-  <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-  </style>
-</head>
-<body>
-
-<div class="page">
-
-  <nav class="nav fade f1">
-    <span class="nav-brand">Structured Achievement</span>
-    <span class="nav-day"><strong>Day 15</strong> of 21</span>
-  </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
-  <div class="hero fade f2">
-    <div class="hero-phase phase-3-color">Phase III — Install</div>
-    <h1 class="hero-title">Build Your<br>Accountability Layer</h1>
-    <p class="hero-intro">Your system works when you feel good and conditions are right. The question is: what keeps it running when they're not? Today you build the accountability structure that makes quitting harder than continuing.</p>
-  </div>
-
-  <div class="principle phase-3-border fade f3">
-    <div class="principle-label phase-3-color">The Law of Responsibility</div>
-      <p>You are fully responsible for everything you are and everything you will become. No one is coming to save you — and that's the most empowering truth there is.</p>
-      <p>Accountability isn't about guilt. It's about <strong>creating conditions where following through is the path of least resistance</strong>.</p>
-  </div>
-
-  <main class="lesson-content">
-
-    <h2 class="section-title">Why willpower always fails eventually</h2>
-    <p class="prose">If your system relies on willpower to run, it has an expiration date. Willpower depletes. It's highest in the morning and lowest in the evening. It weakens under stress, fatigue, and emotional pressure.</p>
-    <p class="prose">The people who look disciplined from the outside aren't running on willpower — they've built environments and structures that make the right behavior automatic. <strong>Accountability is the structural replacement for willpower.</strong></p>
-
-    <h2 class="section-title">Types of accountability</h2>
-    <p class="prose">There are four levels, and you should use at least two:</p>
-    <p class="prose"><strong>Self-accountability</strong> — your tracker, your reviews, your system. This is your baseline. It works best when paired with external layers.</p>
-    <p class="prose"><strong>Social accountability</strong> — telling someone what you're doing. A partner, a friend, a group. When someone knows your commitments, the social cost of quitting goes up.</p>
-    <p class="prose"><strong>Public accountability</strong> — posting your commitment, sharing your progress, making it visible. Not for the likes — for the leverage. It's harder to break a promise that others have witnessed.</p>
-    <p class="prose"><strong>Consequence accountability</strong> — building real stakes into your system. If you miss your non-negotiables for 3 days in a row, something specific happens. A donation to a cause you dislike. Losing a privilege. The consequence has to be real enough to matter.</p>
-
-
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
-
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 16.</p>
-
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Choose at least 2 accountability layers</div>
-        <div class="task-desc">Which types fit your personality and situation? Self-accountability through the tracker is already in place. Add at least one more external layer.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Set up your external accountability</div>
-        <div class="task-desc">If social: tell someone today and set a regular check-in. If public: make a concrete post or commitment. If consequence-based: define the specific consequence and write it down.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Define your failure protocol</div>
-        <div class="task-desc">What happens when you miss a day? Not if — when. Everyone misses eventually. The question is: do you miss one day or do you miss ten? Write a rule: "If I miss a day, I [specific recovery action] the next morning."</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Review your tracker streak</div>
-        <div class="task-desc">Look at your consistency since Day 5. Where did you hold? Where did you break? Use this data to inform which accountability type you need most.</div>
-      </div>
-    </div>
-
-
-    <div class="closing phase-3-style fade f8">
-    <p>You've just added the layer that separates people who finish from people who fade. Your system now has structural support beyond your own willpower.</p>
-    <p>Tomorrow, we prepare for the worst — not out of pessimism, but because every good system has a contingency plan. You'll design the minimum viable version of your day that keeps the streak alive no matter what.</p>
-    <p><strong>Activate your accountability layer today. Don't wait. The activation itself is the commitment.</strong></p>
-    </div>
-
-  </main>
-
-  <a href="day-16.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 16</div>
-      <div class="next-title">Stress-proof your system</div>
-    </div>
-    <span class="next-arrow">→</span>
-  </a>
-
-  <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
-    <span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span>
-    <span class="foot-phase"><span class="foot-dot on-green"></span>Install</span>
-  </div>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Day 15 — Build Your Accountability Layer | Structured Achievement</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  </style></head><body><div class="page">
+<nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 15</strong> of 21</span></nav>
+<div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-green"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
+<div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Build Your<br>Accountability Layer</h1><p class="hero-intro">Your system works when conditions are good and motivation is high. The real question is: what keeps it running when they're not? Today you build the accountability structure that makes quitting harder than continuing.</p></div>
+<div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Responsibility</div><p>You are fully responsible for everything you are, everything you have, and everything you become. No one is coming to rescue you. No external force will make your system work for you. This is the most confronting — and most empowering — truth in the psychology of achievement.</p>
+<p>Accountability is the structural expression of responsibility. It's the mechanism that ensures you follow through on what you've committed to — <strong>not through guilt, but through design</strong>.</p>
+<p>When the system is designed so that following through is easier than quitting, discipline becomes almost effortless. That's the goal today.</p></div>
+<main class="fade f4">
+<h2 class="section-title">Why willpower always has an expiration date</h2>
+<p class="prose">If your system relies on willpower to run, it will eventually fail. This isn't pessimism — it's physiology. Willpower is a depletable resource. It's highest in the morning and lowest in the evening. It weakens under stress, fatigue, illness, and emotional turbulence. It erodes gradually over days and weeks of sustained demand.</p>
+<p class="prose">The people who look disciplined from the outside aren't running on willpower. They've built structures — environments, commitments, and social contracts — that make the right behavior the default behavior. They don't resist temptation better than you. <strong>They've engineered their lives so they face less temptation.</strong></p>
+<p class="prose">Accountability is the final layer of that engineering. It adds an external force that supports your internal commitment. Not because you're weak. Because you're smart enough to know that even strong people need structure.</p>
+
+<h2 class="section-title">Four levels of accountability</h2>
+<p class="prose">Accountability exists on a spectrum from private to public, from gentle to consequential. You should use at least two levels simultaneously for maximum effect.</p>
+<p class="prose"><strong>Level 1: Self-accountability.</strong> Your tracker, your reviews, your system overview. This is your baseline — you've been building it since Day 1. Self-accountability works well for people with strong internal motivation, but it has a weakness: you can negotiate with yourself. You can rationalize a missed day. You can lower the bar without anyone noticing. That's why it works best when paired with at least one external layer.</p>
+<p class="prose"><strong>Level 2: Social accountability.</strong> Telling someone specific what you're doing and setting up a regular check-in. This could be a partner, a friend, a mentor, or a small group. The social cost of reporting a missed commitment is a powerful motivator — not because of judgment, but because the act of telling someone you fell short makes the falling short more real. It's harder to rationalize when you have to say it out loud.</p>
+<p class="prose"><strong>Level 3: Public accountability.</strong> Making your commitment visible to a broader audience — a social media post, a blog, a community. The leverage here isn't likes or comments. It's the knowledge that others are aware of your commitment. You've made a public promise, and the desire to maintain consistency between your public statements and your private actions is deeply wired into human psychology.</p>
+<p class="prose"><strong>Level 4: Consequence accountability.</strong> Building real stakes into your system. If you miss your non-negotiables for 3 consecutive days, something specific happens — a donation to a cause you don't support, the loss of a privilege, a financial penalty. The consequence has to be meaningful enough that you genuinely want to avoid it, but not so severe that it creates anxiety rather than motivation.</p>
+
+<div class="callout">
+<p><strong>The optimal combination:</strong> Self-accountability (always on) + one social or public layer + optional consequence layer for your most critical commitments. This creates redundancy — if one layer weakens, the others hold. Most people find that self-tracking plus one accountability partner is enough to maintain 90%+ consistency.</p>
 </div>
 
-</body>
-</html>
+<h2 class="section-title">Designing your failure protocol</h2>
+<p class="prose">Accountability isn't just about preventing failure — it's about managing it. You will miss a day. Everyone does. The question isn't whether you'll break the streak — it's whether a single break becomes a collapse.</p>
+<p class="prose">Most people, when they miss a day, enter a shame spiral. "I missed yesterday, so what's the point? I'll start again Monday. Actually, next month." One missed day becomes a week. A week becomes a month. The system is abandoned not because of the miss, but because of the story about the miss.</p>
+<p class="prose">A failure protocol prevents this. It's a pre-decided response to a missed day: specific, immediate, and non-negotiable. Something like: "If I miss a day, I do my full morning sequence the next morning plus a 5-minute review of what happened and why. No skipping two days in a row. Ever."</p>
+<p class="prose">The protocol works because it turns a potential crisis into a planned variation. The miss is acknowledged, the response is executed, and the system resumes. No drama. No spiral. Just a correction and a continuation.</p></main>
+<div class="divider fade f6"><div class="divider-icon"></div></div>
+<div class="fade f7"><h2 class="tasks-title">What to do today</h2><p class="tasks-subtitle">Complete all tasks before moving to Day 16.</p></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Choose at least 2 accountability layers</div><div class="task-desc">Self-accountability through the tracker is already in place. Add at least one external layer. Social (tell someone and set up weekly check-ins), public (make a visible commitment), or consequence-based (define real stakes). Choose what fits your personality and situation.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Set up your external accountability today</div><div class="task-desc">If social: message or call that person today. Tell them what you're doing and ask if they'll check in with you weekly. If public: write and post your commitment. If consequence-based: define the specific consequence and write it down. Don't delay — the setup itself is the first act of accountability.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Design your failure protocol</div><div class="task-desc">Write a specific rule: 'If I miss a day, I [exact recovery action] the next morning.' Make it concrete, immediate, and non-negotiable. The key rule: never miss twice in a row.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Review your tracker streak</div><div class="task-desc">Look at your consistency since Day 5. Where did you hold perfectly? Where did you break? If you had a failure protocol in place, would any of those breaks have been shorter? Use this data to inform which accountability layers you need most.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Activate today</div><div class="task-desc">Whatever accountability layers you chose, activate them now. Not tomorrow. Not after you've 'prepared.' The activation itself is the commitment. Telling your accountability partner today is more powerful than planning to tell them next week.</div></div></div>
+<div class="closing phase-3-style fade f8"><p>Your system now has structural support beyond your own willpower. On strong days, you won't need it. On weak days — the days that determine whether a system survives or dies — the accountability layer holds you in place when motivation can't.</p>
+<p>Tomorrow, you prepare for the absolute worst — the days when nothing goes right, your schedule implodes, and your energy is depleted. You'll design a minimum viable day that keeps the system alive no matter what life throws at you.</p>
+<p><strong>Your accountability is now active. The system has witnesses. That changes the game.</strong></p></div><a href="day-16.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 16</div><div class="next-title">Stress-proof your system</div></div><span class="next-arrow">→</span></a>
+<div class="foot fade f9"><span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span><span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span><span class="foot-phase"><span class="foot-dot on-green"></span>Install</span></div></div></body></html>

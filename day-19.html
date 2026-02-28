@@ -1,678 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 19 — Plan Your Monthly Recalibration | Structured Achievement</title>
-  <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-  </style>
-</head>
-<body>
-
-<div class="page">
-
-  <nav class="nav fade f1">
-    <span class="nav-brand">Structured Achievement</span>
-    <span class="nav-day"><strong>Day 19</strong> of 21</span>
-  </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment filled-green"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
-  <div class="hero fade f2">
-    <div class="hero-phase phase-3-color">Phase III — Install</div>
-    <h1 class="hero-title">Plan Your Monthly<br>Recalibration</h1>
-    <p class="hero-intro">Weekly reviews keep the system calibrated. Monthly recalibrations keep it alive. Today you build the process that ensures your system evolves as you do — instead of becoming a stale artifact you outgrow.</p>
-  </div>
-
-  <div class="principle phase-3-border fade f3">
-    <div class="principle-label phase-3-color">The Law of Goal Setting</div>
-      <p>Goals are the fuel in the furnace of achievement. But goals that never evolve become cages instead of fuel.</p>
-      <p>A system that can't adapt <strong>is a system with an expiration date</strong>.</p>
-  </div>
-
-  <main class="lesson-content">
-
-    <h2 class="section-title">Why monthly recalibration matters</h2>
-    <p class="prose">Your direction will evolve. Your priorities will shift. The identity you wrote on Day 8 will mature as you grow into it. This is healthy — it means the system is working.</p>
-    <p class="prose">But without a structured moment to capture and process these changes, they happen unconsciously. You drift away from your system not because it failed, but because you outgrew it without updating it.</p>
-    <p class="prose">The monthly recalibration is a 30-minute session — once a month — where you revisit the strategic layer of your system: direction, identity, and priorities.</p>
-
-    <h2 class="section-title">The recalibration process</h2>
-    <p class="prose"><strong>Step 1: Review the past month's data.</strong> Look at your weekly reviews. What patterns do you see across 4 weeks? Where was consistency strong? Where did it slip?</p>
-    <p class="prose"><strong>Step 2: Reassess your direction.</strong> Is your direction statement still the right target? Has your definition of success shifted? Update it if needed.</p>
-    <p class="prose"><strong>Step 3: Reassess your identity.</strong> Are you living closer to your identity statement? Has the gap narrowed? Rewrite it to reflect who you're becoming.</p>
-    <p class="prose"><strong>Step 4: Reassess your priorities.</strong> Are your top 3 still the right top 3? Has one been completed? Has a new one emerged? Adjust the stack.</p>
-    <p class="prose"><strong>Step 5: Set next month's focus.</strong> Based on your updated direction, identity, and priorities — what's the single most important area to concentrate on in the coming month?</p>
-
-
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
-
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 20.</p>
-
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Choose your monthly recalibration date</div>
-        <div class="task-desc">Pick a specific day each month — first Sunday, last Saturday, the 1st. Add it to your calendar with a recurring reminder.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Write out your recalibration template</div>
-        <div class="task-desc">The 5-step process above, formatted in a way you'll actually use. Keep it alongside your weekly review template.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Run a practice recalibration now</div>
-        <div class="task-desc">Treat the past 19 days as your first month. Walk through all 5 steps using real data. Update your direction, identity, and priorities if needed.</div>
-      </div>
-    </div>
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Document your evolution</div>
-        <div class="task-desc">Write a brief note about how your thinking has changed since Day 1. What do you see differently? What matters more now? This becomes part of your operating record.</div>
-      </div>
-    </div>
-
-
-    <div class="closing phase-3-style fade f8">
-    <p>You now have three cycles in place: daily execution, weekly review, monthly recalibration. Together, they form a self-sustaining operating rhythm.</p>
-    <p>Tomorrow, you pull everything together into a single consolidated view — your personal operating system, documented and complete.</p>
-    <p><strong>The system isn't just something you follow. It's something you maintain. That's what makes it permanent.</strong></p>
-    </div>
-
-  </main>
-
-  <a href="day-20.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 20</div>
-      <div class="next-title">Consolidate your operating system</div>
-    </div>
-    <span class="next-arrow">→</span>
-  </a>
-
-  <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
-    <span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span>
-    <span class="foot-phase"><span class="foot-dot on-green"></span>Install</span>
-  </div>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Day 19 — Plan Your Monthly Recalibration | Structured Achievement</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  </style></head><body><div class="page">
+<nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 19</strong> of 21</span></nav>
+<div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
+<div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Plan Your Monthly<br>Recalibration</h1><p class="hero-intro">Weekly reviews keep you calibrated week to week. Monthly recalibrations keep your system alive month to month — ensuring your direction, identity, and priorities evolve as you grow instead of becoming stale artifacts you outgrow and abandon.</p></div>
+<div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Goal Setting</div><p>Goals are the fuel in the furnace of achievement. Without them, there's nothing to drive toward. But goals that never evolve become prisons instead of fuel — fixed targets in a changing life.</p>
+<p>The most successful people don't just set goals — they revisit, refine, and sometimes completely replace them as their understanding deepens and their circumstances change.</p>
+<p><strong>A system that can't adapt is a system with an expiration date.</strong> The monthly recalibration ensures your system remains a living, evolving tool — not a relic of who you were a month ago.</p></div>
+<main class="fade f4">
+<h2 class="section-title">Why monthly matters</h2>
+<p class="prose">Your weekly review handles tactical maintenance — did I do what I said I'd do? Are my habits holding? Where do I need to adjust? It operates at the level of daily execution.</p>
+<p class="prose">The monthly recalibration operates at the strategic level. It asks bigger questions: Is my direction still the right direction? Has my identity evolved? Are my priorities still the right priorities? These questions don't need weekly attention — they change slowly. But they absolutely need monthly attention, because slow change is still change.</p>
+<p class="prose">Consider where you were on Day 1 versus where you are now. Your understanding of yourself has deepened. Your definition of what matters has sharpened. Your sense of what's possible has expanded. That evolution happened in just 19 days. Over the coming months, it will continue — and your system needs to evolve with it.</p>
+<p class="prose">Without monthly recalibration, you'll eventually find yourself running a system designed for someone you used to be. The habits will still work, but they'll feel disconnected from your current direction. The priorities will still be checked off, but they won't produce the same satisfaction. <strong>The system will be technically functional but emotionally dead.</strong> Monthly recalibration prevents this by keeping the strategic layer fresh and aligned.</p>
+
+<h2 class="section-title">The 30-minute recalibration process</h2>
+<p class="prose">Monthly recalibration is more thorough than the weekly review but still structured and time-bounded. Thirty minutes, once a month, at the same time. Here's the process:</p>
+<p class="prose"><strong>Step 1: Review the month's weekly reviews (5 minutes).</strong> You have 4 weekly reviews to look back on. What themes emerged? Where was consistency strong across the month? Where did it repeatedly slip? The weekly reviews are your raw data — the monthly recalibration is where you synthesize them into insight.</p>
+<p class="prose"><strong>Step 2: Reassess your direction (5 minutes).</strong> Read your current direction statement. Is it still the right target? Has your definition of success shifted based on what you've experienced and learned? A direction that was perfect on Day 1 may need sharpening or expanding after a full month of real operation. Update it if needed.</p>
+<p class="prose"><strong>Step 3: Reassess your identity (5 minutes).</strong> Read your identity statement. Are you living closer to it than a month ago? Has the gap narrowed? Has your understanding of your operating identity deepened? Rewrite it to reflect who you're becoming — not who you were when you first wrote it.</p>
+<p class="prose"><strong>Step 4: Reassess your priorities (5 minutes).</strong> Are your top 3 still the right top 3? Has one been largely accomplished and ready to move to maintenance? Has a new domain emerged that deserves concentrated attention? The priority stack should be dynamic — reflecting your current reality, not last month's plan.</p>
+<p class="prose"><strong>Step 5: Set next month's focus (10 minutes).</strong> Based on your updated direction, identity, and priorities: what is the single most important area to concentrate on in the coming month? Write a one-paragraph month intention that describes what success looks like 30 days from now.</p>
+
+<div class="callout">
+<p><strong>The evolution principle:</strong> Your direction, identity, and priorities are meant to evolve. Changing them during a recalibration is not inconsistency — it's growth. The only failure is leaving them unchanged despite clear evidence that they need updating. Rigidity is not commitment. Rigidity is how good systems become irrelevant.</p>
 </div>
 
-</body>
-</html>
+<h2 class="section-title">The rhythm of sustained operation</h2>
+<p class="prose">After Day 21, your complete operating rhythm looks like this:</p>
+<p class="prose"><strong>Daily:</strong> Execute your structure. Complete your non-negotiables and keystone habits. Log in the tracker during your evening close-out. Time: 2 minutes for logging.</p>
+<p class="prose"><strong>Weekly:</strong> Run your 10-minute review. Assess the week's data. Make one adjustment. Set next week's intention. Time: 10 minutes.</p>
+<p class="prose"><strong>Monthly:</strong> Run your 30-minute recalibration. Reassess direction, identity, and priorities. Set the month's focus. Time: 30 minutes.</p>
+<p class="prose">Daily execution keeps the system running. Weekly reviews keep it calibrated. Monthly recalibrations keep it evolving. Together, they form a self-sustaining cycle that requires no external input — no coach, no course, no motivation. Just you, your data, and your commitment to honest maintenance.</p></main>
+<div class="divider fade f6"><div class="divider-icon"></div></div>
+<div class="fade f7"><h2 class="tasks-title">What to do today</h2><p class="tasks-subtitle">Complete all tasks before moving to Day 20.</p></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Choose your monthly recalibration date</div><div class="task-desc">Pick a specific day each month — first Sunday, last Saturday, the 1st. The date matters less than the consistency. Add it to your calendar as a recurring event with a reminder.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write out your recalibration template</div><div class="task-desc">The 5-step process with time allocations: monthly review synthesis (5 min), direction reassessment (5 min), identity reassessment (5 min), priority reassessment (5 min), next month's focus (10 min). Format it alongside your weekly review template.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Run a practice recalibration now</div><div class="task-desc">Treat the past 19 days as your first month. Walk through all 5 steps with real data. Update your direction and identity if they've evolved. Reassess your priorities. Set a focus for the final 2 days and beyond.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Document your evolution since Day 1</div><div class="task-desc">Write a brief paragraph about how your thinking has changed. What do you understand about yourself now that you didn't on Day 1? What priorities have shifted? What surprised you? This becomes part of your permanent installation record.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Confirm your complete operating rhythm</div><div class="task-desc">Write out your three cycles in one place: daily (execute + log), weekly (10-min review), monthly (30-min recalibration). This is the engine that runs your system indefinitely. Make sure all three have calendar entries.</div></div></div>
+<div class="closing phase-3-style fade f8"><p>You now have every maintenance mechanism in place. Daily execution keeps the system moving. Weekly reviews keep it calibrated. Monthly recalibrations keep it evolving. Three nested cycles, each serving a different time horizon, together creating a self-sustaining operating rhythm.</p>
+<p>Tomorrow, you pull everything together. Every component, every principle, every tool — consolidated into a single operating manual that you'll reference for as long as you run the system.</p>
+<p><strong>The system doesn't need you to be motivated. It needs you to show up for maintenance. Ten minutes a week. Thirty minutes a month. That's the cost of permanent operation.</strong></p></div><a href="day-20.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 20</div><div class="next-title">Consolidate your operating system</div></div><span class="next-arrow">→</span></a>
+<div class="foot fade f9"><span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span><span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span><span class="foot-phase"><span class="foot-dot on-green"></span>Install</span></div></div></body></html>

@@ -1,678 +1,468 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 9 — Architect Your Priorities | Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style>
-</head>
-<body>
-
+</head><body>
 <div class="page">
-
-  <nav class="nav fade f1">
-    <span class="nav-brand">Structured Achievement</span>
-    <span class="nav-day"><strong>Day 9</strong> of 21</span>
-  </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
+  <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 9</strong> of 21</span></nav>
+  <div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
   <div class="hero fade f2">
     <div class="hero-phase phase-2-color">Phase II — Reconstruct</div>
     <h1 class="hero-title">Architect<br>Your Priorities</h1>
-    <p class="hero-intro">You've defined who you are. Now you define what matters most. Not everything can be a priority — and treating everything equally is the fastest way to make progress on nothing.</p>
+    <p class="hero-intro">You've defined who you are. Now you define what matters most. Because the person you described yesterday can't give equal energy to everything — and treating everything as equally important is the fastest way to make progress on nothing.</p>
   </div>
+  <div class="principle phase-2-border fade f3"><div class="principle-label phase-2-color">The Law of Concentration</div>
+    <p>The ability to concentrate single-mindedly on the most important thing and stay with it until it is complete is the essential quality of high achievement. Scattered effort produces scattered results.</p>
+    <p>Most people spread their energy across too many areas — career, health, relationships, finances, hobbies, learning, side projects — and end each week feeling like they barely moved on any of them. The problem isn't effort. The problem is <strong>diffusion</strong>.</p>
+    <p>Concentration means choosing fewer things and going deeper on them. It means accepting that some important areas of your life will be on maintenance mode while you focus intensely on the ones that matter most right now.</p></div>
+  <main class="fade f4">
+    <h2 class="section-title">The priority trap</h2>
 
-  <div class="principle phase-2-border fade f3">
-    <div class="principle-label phase-2-color">The Law of Concentration</div>
-      <p>The ability to concentrate single-mindedly on the most important thing and stay with it until it is complete is the hallmark of high achievement.</p>
-      <p>Scattered effort produces scattered results. <strong>Concentrated effort produces breakthroughs.</strong></p>
-  </div>
+    <p class="prose">The word "priority" entered the English language in the 1400s. It was singular — it meant the one thing that mattered most. It stayed singular for the next 500 years. Only in the 1900s did people start talking about "priorities" — plural. And with that linguistic shift came a conceptual one: the idea that you could have multiple most-important things simultaneously.</p>
 
-  <main class="lesson-content">
+    <p class="prose">You can't. This isn't a motivational claim — it's a cognitive reality. Your brain is designed for sequential focus, not parallel processing. When you try to focus on five priorities at once, you're not focusing on five things — you're rapidly switching between them, losing efficiency with every switch, and making meaningful progress on none.</p>
 
-    <h2 class="section-title">The priority problem</h2>
-    <p class="prose">Most people have too many priorities — which means they have none. When everything is important, nothing gets the focused attention it needs to actually move forward.</p>
-    <p class="prose">You know this already. You've felt the pull of trying to improve everything at once — health, career, relationships, finances, learning, habits — and ending each week feeling like you barely moved on any of them.</p>
-    <p class="prose">The fix isn't working harder. It's <strong>choosing fewer things and going deeper on them</strong>.</p>
+    <p class="prose">This is why so many people feel busy but unproductive. They're not lazy. They're diluted. Their energy is spread so thin across so many "priorities" that none of them receive the concentrated attention required for real progress.</p>
+
+    <p class="prose">The fix is not working harder. It's <strong>choosing fewer things and giving them more</strong>.</p>
 
     <h2 class="section-title">How to build your priority stack</h2>
-    <p class="prose">A priority stack is a ranked list of the areas that get your focused energy. Not all the areas of your life — just the ones that are active priorities right now.</p>
-    <p class="prose"><strong>Step 1: List your life domains.</strong> Career, health, relationships, finances, personal development, creativity — whatever categories are relevant to your life.</p>
-    <p class="prose"><strong>Step 2: Choose your top 3.</strong> Which three domains, if you made real progress on them in the next 14 days, would create the biggest positive impact on your direction? Those are your active priorities.</p>
-    <p class="prose"><strong>Step 3: Define one clear outcome for each.</strong> Not "improve my health" but "exercise 4 times per week and prepare meals in advance." Specific, measurable, tied to a behavior.</p>
-    <p class="prose">Everything else goes on the maintenance list — you handle it, but you don't invest focused energy in it during this installation period.</p>
 
+    <p class="prose">A priority stack is a ranked list of the areas that get your concentrated energy during this installation period. Not all the areas of your life. Not everything that matters. Just the 3 areas where focused effort right now would create the biggest positive impact on your direction.</p>
 
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
+    <p class="prose"><strong>Step 1: List your life domains.</strong> Write down every area of your life that competes for your attention. Be comprehensive. Most people have 6–10: career/work, health/fitness, relationships, finances, personal development, creative projects, education, social life, family, spirituality, hobbies. Get them all on paper.</p>
 
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 10.</p>
+    <p class="prose"><strong>Step 2: Choose your top 3.</strong> This is the hard part — and the most valuable. Look at your list and ask: if I could only make real progress in 3 of these areas over the next 14 days, which 3 would create the most meaningful impact on my direction and my life? Those are your active priorities. Everything else goes on the maintenance list.</p>
 
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">List all your life domains</div>
-        <div class="task-desc">Write down every area of your life that competes for your attention. Be complete — most people have 6–10.</div>
-      </div>
+    <div class="callout">
+      <p><strong>The maintenance list is not a failure.</strong> Putting an area on maintenance doesn't mean you're abandoning it. It means you're handling it — keeping it functional — without investing concentrated creative energy in it during this period. Your health doesn't need to be a top-3 priority if your basic habits are already working. Your finances don't need concentrated attention if they're stable. The maintenance list is permission to stop trying to advance everything simultaneously.</p>
     </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Choose your top 3 active priorities</div>
-        <div class="task-desc">Which three areas would create the most meaningful progress toward your direction if you focused on them over the next 14 days? Rank them.</div>
-      </div>
+    <p class="prose"><strong>Step 3: Define one clear outcome for each priority.</strong> Not "improve my health" — that's a direction, not an outcome. "Exercise 4 times per week and prepare meals in advance for the next 14 days." Specific. Measurable. Tied to behavior you control. For each of your top 3, write one sentence that describes what success looks like by Day 21.</p>
+
+    <p class="prose"><strong>Step 4: Create your "not now" list.</strong> Write down everything that didn't make the top 3. This serves two purposes. First, it acknowledges that these areas matter — you're not pretending they don't exist. Second, it gives your brain permission to stop worrying about them. One of the biggest energy drains is the guilt of not working on things you think you should be working on. The "not now" list resolves this by making the deferral explicit and intentional.</p>
+
+    <h2 class="section-title">The 3-priority filter</h2>
+
+    <p class="prose">Once your priorities are defined, they become a decision-making tool. Every request, opportunity, and decision that comes your way gets filtered through a simple question: <strong>does this serve my top 3 priorities?</strong></p>
+
+    <p class="prose">If yes, consider it. If no, decline it or defer it. This sounds simple, and it is — but it requires practice, because most people are conditioned to say yes by default. They accept meetings, take on projects, agree to social commitments, and volunteer for things that have nothing to do with their actual priorities — because saying no feels uncomfortable.</p>
+
+    <p class="prose">The priority filter makes saying no easier, because it's not personal — it's structural. You're not saying "I don't want to." You're saying "this doesn't serve my current priorities." That distinction matters psychologically. It shifts the refusal from a character judgment to a system decision.</p>
+
+    <div class="example weak">
+      <div class="example-tag">No filter</div>
+      <blockquote>"I'm trying to get in shape, grow my career, learn a new language, fix my sleep schedule, start a side project, read more books, and spend more time with family — all at once."</blockquote>
+      <p class="example-note">Seven active priorities means zero concentrated energy on any of them. This person will be in the same position in 6 months, frustrated by lack of progress on everything.</p>
     </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Define one clear outcome for each priority</div>
-        <div class="task-desc">For each of your top 3, write one specific, observable outcome you're working toward. Not a feeling — a result.</div>
-      </div>
+    <div class="example strong">
+      <div class="example-tag">Focused stack</div>
+      <blockquote>"My top 3 for the next 14 days: (1) Career — complete the project milestone by Day 18. (2) Health — train 4x/week and meal prep Sundays. (3) Personal development — follow the Structured Achievement system with 100% consistency. Everything else is on maintenance."</blockquote>
+      <p class="example-note">Three priorities, each with a clear outcome. This person will make visible, measurable progress on all three because their energy is concentrated.</p>
     </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Create your "not now" list</div>
-        <div class="task-desc">Everything that didn't make the top 3 goes here. This isn't abandonment — it's intentional deferral. Write it down so your brain can let go of it.</div>
-      </div>
-    </div>
+    <h2 class="section-title">Priorities and identity alignment</h2>
 
+    <p class="prose">Your top 3 priorities should align with the identity you defined yesterday. If your identity statement describes someone who is disciplined and career-focused, your priorities should reflect career and self-management. If your identity describes someone who values health and family, your priorities should reflect those domains.</p>
 
-    <div class="closing phase-2-style fade f8">
-    <p>You now have direction, identity, and a clear priority stack. These three together form the strategic core of your system — they determine what you focus on, how you show up, and where your energy flows.</p>
-    <p>Tomorrow, we move from strategy to mechanics. You'll design the specific habits that turn your priorities into daily action.</p>
-    <p><strong>From today forward, every decision gets filtered through your top 3 priorities. If it doesn't serve them, it waits.</strong></p>
-    </div>
+    <p class="prose">When identity, direction, and priorities are all aligned, you get a level of focus and clarity that most people never experience. Every decision becomes simple. Every day has a clear purpose. Energy stops leaking into areas that don't matter right now, and concentrates on the areas that do.</p>
 
-  </main>
+    <p class="prose">This is the compound effect of Phase II. Each component — identity, priorities, habits — connects to and reinforces the others. By the end of this week, your system won't just be a set of external structures. It will be an integrated operating model that aligns who you are, what you focus on, and what you do every day.</p></main>
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
+  <div class="fade f7"><h2 class="tasks-title">What to do today</h2><p class="tasks-subtitle">Complete all tasks before moving to Day 10.</p></div>
+  <div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">List all your life domains</div><div class="task-desc">Write down every area of your life that competes for attention and energy. Be comprehensive — most people have 6–10 domains. Include everything from career to relationships to personal projects to health.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Choose your top 3 active priorities</div><div class="task-desc">Which 3 areas would create the most meaningful impact on your direction if you focused on them for the next 14 days? Rank them 1–2–3. This is not about what's most important in general — it's about where concentrated effort right now would produce the biggest result.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Define one clear outcome for each priority</div><div class="task-desc">For each of your top 3, write one specific, observable outcome you're working toward by Day 21. Not a feeling — a result. Not a direction — a destination. Something you can look at on Day 21 and clearly say: I did this, or I didn't.</div><span class="task-hint">"Exercise 4x/week for the next 14 days" not "get healthier."</span></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write your "not now" list</div><div class="task-desc">Everything that didn't make the top 3 goes here. Write each one down explicitly. This isn't abandonment — it's intentional deferral. Give your brain permission to stop worrying about these areas during the installation period.</div></div></div>
+<div class="task fade f7"><div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Test your priorities against your identity</div><div class="task-desc">Read your identity statement, then your top 3 priorities. Does the person described in your identity naturally focus on these areas? If there's a disconnect, adjust until they align.</div></div></div>
+  <div class="closing phase-2-style fade f8">
+    <p>You now have direction, identity, and a focused priority stack. These three together form the strategic core of your operating system. They answer the three most important questions: where am I going, who am I being, and what deserves my concentrated energy?</p>
+    <p>Everything from here is tactical — the specific habits, routines, and systems that translate strategy into daily action. Tomorrow, you design the exact habits that turn your priorities into automatic daily behavior.</p>
+    <p><strong>From today forward, every decision gets filtered through your top 3 priorities. If it doesn't serve them, it waits. That's not selfish — that's strategic.</strong></p></div>
 
   <a href="day-10.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 10</div>
-      <div class="next-title">Install your core habits</div>
-    </div>
+    <div><div class="next-eyebrow">Tomorrow — Day 10</div><div class="next-title">Install your core habits</div></div>
     <span class="next-arrow">→</span>
   </a>
-
   <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
+    <span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span>
     <span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
-
-</div>
-
-</body>
-</html>
+</div></body></html>

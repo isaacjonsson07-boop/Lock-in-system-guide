@@ -4,676 +4,509 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 7 — Week One Review | Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
 <div class="page">
-
   <nav class="nav fade f1">
     <span class="nav-brand">Structured Achievement</span>
     <span class="nav-day"><strong>Day 7</strong> of 21</span>
   </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
+  <div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
   <div class="hero fade f2">
     <div class="hero-phase ">Phase I — Stabilize</div>
     <h1 class="hero-title">Week One<br>Review</h1>
-    <p class="hero-intro">You've installed six components in six days. Today you step back, look at the data, and assess what's working, what's slipping, and what needs to be adjusted before you move deeper.</p>
+    <p class="hero-intro">Six components installed in six days. Direction, structure, defaults mapped, non-negotiables set, tracker live, environment redesigned. Today you step back, look at the actual data, and assess what's holding, what's slipping, and what needs to change.</p>
   </div>
-
   <div class="principle  fade f3">
     <div class="principle-label ">The Law of Feedback</div>
-      <p>Success is not a straight line — it's a process of continuous course correction based on honest feedback.</p>
-      <p>The review doesn't judge you. It <strong>informs you</strong>.</p>
+    
+    <p>Success is not a straight line. It's a continuous process of action, feedback, and correction. The people who achieve the most are not the ones who execute perfectly — they're the ones who review honestly, adjust quickly, and keep moving.</p>
+    <p>Without feedback, even the best system drifts off course. A ship crossing the ocean is off course more than 90% of the time — it arrives at its destination not through perfect navigation, but through <strong>continuous small corrections based on real-time data</strong>.</p>
+    <p>Your review today is that correction. The data doesn't judge you. It informs you.</p>
+  </div>
+  <main class="fade f4">
+    <h2 class="section-title">Why this review matters more than any lesson</h2>
+
+    <p class="prose">Information without reflection is entertainment. Over the past six days, you've absorbed principles, built structures, and started tracking. But none of that matters if you don't stop and honestly assess what actually happened versus what you planned.</p>
+
+    <p class="prose">Most people skip reviews. They feel like they already know how the week went based on how they feel about it. But feelings are unreliable data. You might feel like the week was a failure because you missed two non-negotiables — while the data shows you completed 85% of them, followed your structure on five out of six days, and logged every single day in the tracker.</p>
+
+    <p class="prose">Conversely, you might feel like things went well because yesterday was a good day — while the data shows a pattern of strong starts followed by mid-week collapses. <strong>The review replaces feelings with facts.</strong> It's the most valuable 15 minutes you'll spend in the entire program.</p>
+
+    <p class="prose">Get used to this. Reviews are the mechanism that turns a temporary program into a permanent operating system. They're what separate people who complete things from people who just start them.</p>
+
+    <h2 class="section-title">How to run the review</h2>
+
+    <p class="prose">Open your tracker. Look at the data from Days 1–6. Then work through each component systematically.</p>
+
+    <p class="prose"><strong>Direction check.</strong> Read your Day 1 direction statement out loud. Does it still feel right? Does it still create clarity when you read it? Is it specific enough to guide daily decisions? After six days of experience, you may see ways to sharpen it. Not change it fundamentally — sharpen it. The direction should get clearer over time, not vaguer.</p>
+
+    <p class="prose"><strong>Structure check.</strong> How many of the six days did you follow your three anchors? Morning sequence, core execution block, evening close-out — which ones held and which ones slipped? More importantly: <em>why</em> did they slip? Was the structure too ambitious? Was there a recurring disruption you didn't account for? Did you fall back into a default pattern?</p>
+
+    <p class="prose"><strong>Non-negotiable check.</strong> Look at your tracker data. What's your completion rate across the week? Which non-negotiables did you hit consistently and which ones did you miss? If you missed the same one multiple times, that's a signal — either the non-negotiable needs to be simplified, or there's a default pattern (Day 3) that's overpowering it.</p>
+
+    <p class="prose"><strong>Default check.</strong> Did any of the patterns you identified on Day 3 reassert themselves this week? How did you respond when they showed up? This is important data for the rest of the program — your defaults don't disappear because you identified them. They fade gradually as your new patterns strengthen.</p>
+
+    <p class="prose"><strong>Environment check.</strong> Did the environmental changes you made yesterday help? Were there moments where your environment still undermined your system? Are there additional changes that would reduce friction further?</p>
+
+    <div class="callout">
+      <p><strong>The most important question in any review:</strong> What would I do differently if I were starting this week over? Don't just assess what happened — extract the lesson. The review is useful not because it tells you what went wrong, but because it tells you <strong>what to adjust going forward</strong>.</p>
+    </div>
+
+    <h2 class="section-title">How to recalibrate</h2>
+
+    <p class="prose">Based on your review, you're going to make one — and only one — adjustment. Not five. Not a complete overhaul. One specific change that addresses the most important finding from your review.</p>
+
+    <p class="prose">If your biggest issue was missing your morning sequence, the adjustment might be: "set my alarm 15 minutes earlier" or "prepare my morning the night before." If your biggest issue was breaking your core execution block for phone checks, the adjustment might be: "phone stays in another room during core block, starting tomorrow."</p>
+
+    <p class="prose">One change is enough because it's sustainable. Trying to fix everything at once is the same trap as having too many non-negotiables — it spreads your focus too thin and nothing actually changes. One targeted adjustment, implemented with discipline, creates more improvement than five adjustments implemented halfheartedly.</p>
+
+    <h2 class="section-title">Writing your status report</h2>
+
+    <p class="prose">The final step of your review is a brief written summary — 3–5 sentences that capture where you are right now. Think of it as a status report to yourself. What's working. What's struggling. What you're adjusting. Where you are compared to Day 1.</p>
+
+    <p class="prose">This becomes part of your installation record. On Day 14 and Day 21, you'll look back at this report and see how far you've come. The value of the report isn't in the writing — it's in the comparison over time.</p></main>
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
+  <div class="fade f7">
+    <h2 class="tasks-title">What to do today</h2>
+    <p class="tasks-subtitle">Complete all tasks before moving to Day 8.</p>
+  </div>
+  
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Run a full 6-day review</div>
+      <div class="task-desc">Open your tracker and review each day from Day 1 through today. For each component — direction, structure, non-negotiables, defaults, environment — rate your consistency: strong (held most days), partial (held some days), or missed (didn't hold).</div>
+      
+    </div>
   </div>
 
-  <main class="lesson-content">
-
-    <h2 class="section-title">Why reviews matter more than lessons</h2>
-    <p class="prose">Information without reflection is entertainment. You've absorbed six days of principles, built real structures, and started tracking. But none of that matters if you don't stop and honestly assess what actually happened.</p>
-    <p class="prose">This review is not about motivation. It's not about feeling good or bad about your week. It's a <strong>structured diagnostic</strong> — a 15-minute process that tells you exactly where your system is strong and where it needs work.</p>
-    <p class="prose">Get used to this. Reviews are the most valuable part of the entire system. They're what separate people who complete things from people who just start them.</p>
-
-    <h2 class="section-title">How to run your review</h2>
-    <p class="prose">Open your tracker. Look at the past 6 days. Then answer these questions honestly:</p>
-    <p class="prose"><strong>Direction check</strong> — Is your direction statement still clear and relevant? Does it still motivate action when you read it? If not, sharpen it.</p>
-    <p class="prose"><strong>Structure check</strong> — How many days did you follow your daily structure? What caused the misses? Is the structure realistic or does it need adjusting?</p>
-    <p class="prose"><strong>Non-negotiable check</strong> — Which ones did you hit consistently? Which ones did you skip? Why?</p>
-    <p class="prose"><strong>Default check</strong> — Did any of the old patterns from Day 3 resurface? How did you respond?</p>
-    <p class="prose"><strong>Environment check</strong> — Did the changes you made yesterday help? What still needs adjusting?</p>
-
-
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
-
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 8.</p>
-
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Run a full 6-day review</div>
-        <div class="task-desc">Open your tracker and review each day. For each component (direction, structure, non-negotiables), rate your consistency on a simple scale: strong, partial, or missed.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Identify your #1 strength and #1 weakness</div>
+      <div class="task-desc">What component held up best this week? What fell apart most? Be specific — not 'discipline' but 'I followed my morning sequence 5 out of 6 days' or 'I skipped my evening close-out 4 times because I stayed up too late.'</div>
+      <span class="task-hint">Let the tracker data answer this, not your feelings about the week.</span>
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Identify your #1 strength and #1 weakness</div>
-        <div class="task-desc">What held up best this week? What fell apart most? Be specific — not "discipline" but "I skipped my morning anchor 3 out of 6 days because I stayed up too late."</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Make one specific adjustment</div>
+      <div class="task-desc">Based on your review, identify one change that would have the biggest positive impact on next week. Write it down clearly: what you're changing, why, and how it works starting tomorrow.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Recalibrate one thing</div>
-        <div class="task-desc">Based on your review, make one adjustment. Tighten a non-negotiable, simplify your structure, sharpen your direction statement. One change, implemented tomorrow.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Write your Week 1 status report</div>
+      <div class="task-desc">3–5 sentences summarizing your first week. Where are you compared to Day 1? What's your non-negotiable completion rate? What feels different? What's your one adjustment for Week 2? This goes into your installation record.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Write a one-paragraph status report</div>
-        <div class="task-desc">Summarize your first week in 3–5 sentences. Where are you now compared to Day 1? This becomes part of your installation record.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Acknowledge the foundation you've built</div>
+      <div class="task-desc">In six days, you've installed a direction, daily structure, pattern awareness, behavioral anchors, a tracking system, and an optimized environment. That's a complete operating foundation. Review your tracker — the data is proof of what you've built.</div>
+      
     </div>
-
-
-    <div class="closing  fade f8">
-    <p>Phase I is complete. In seven days, you've gone from zero structure to a functioning daily system with a clear direction, a daily rhythm, behavioral anchors, a tracker, and environmental awareness.</p>
-    <p>Tomorrow you enter Phase II — Reconstruct. The foundation is stable. Now we go deeper: identity, priorities, habits, and energy. The system gets sharper from here.</p>
-    <p><strong>Rest tonight. You've earned the stability. Tomorrow, we build on it.</strong></p>
-    </div>
-
-  </main>
+  </div>
+  <div class="closing  fade f8">
+    <p>Phase I is complete. In seven days, you've gone from zero structure to a functioning daily operating system with direction, rhythm, discipline, tracking, and environmental support. That's not nothing. That's the foundation everything else builds on.</p>
+    <p>Tomorrow you enter Phase II — Reconstruct. The foundation is stable. Now we go deeper. You'll work on identity, priorities, habit architecture, energy management, decision-making, and system simplification. The system stops being something you maintain through effort and starts becoming something that runs because it's <em>who you are</em>.</p>
+    <p>Phase I asked: can you build a structure and follow it? Phase II asks: can you make that structure a permanent part of how you operate?</p>
+    <p><strong>Rest tonight. Review your status report. Tomorrow, Phase II begins with the most important question of the entire program: who are you?</strong></p></div>
 
   <a href="day-08.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 8</div>
-      <div class="next-title">Define your operating identity</div>
-    </div>
+    <div><div class="next-eyebrow">Tomorrow — Day 8</div><div class="next-title">Define your operating identity</div></div>
     <span class="next-arrow">→</span>
   </a>
-
   <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
+    <span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Reconstruct</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
-
 </div>
-
 </body>
 </html>

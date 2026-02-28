@@ -4,674 +4,508 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 12 — Eliminate and Simplify | Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
 <div class="page">
-
-  <nav class="nav fade f1">
-    <span class="nav-brand">Structured Achievement</span>
-    <span class="nav-day"><strong>Day 12</strong> of 21</span>
-  </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
+  <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 12</strong> of 21</span></nav>
+  <div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
   <div class="hero fade f2">
     <div class="hero-phase phase-2-color">Phase II — Reconstruct</div>
     <h1 class="hero-title">Eliminate<br>and Simplify</h1>
-    <p class="hero-intro">You've been building for 11 days. Some of what you've installed is working. Some isn't earning its place. Today you strip the system down to only what matters.</p>
+    <p class="hero-intro">You've been building for 11 days — adding components, installing habits, expanding your system. Today you do the opposite. You strip everything back to what actually works and remove everything that doesn't earn its place.</p>
   </div>
-
   <div class="principle phase-2-border fade f3">
     <div class="principle-label phase-2-color">The Law of Forced Efficiency</div>
-      <p>There is never enough time to do everything, but there is always enough time to do the most important thing.</p>
-      <p>The system doesn't need more — it needs <strong>less done better</strong>.</p>
+    
+    <p>There is never enough time to do everything, but there is always enough time to do the most important thing. When you accept this fully, you stop trying to fit everything in and start making hard choices about what truly deserves your energy.</p>
+    <p>Forced efficiency is what happens when you impose constraints deliberately. Paradoxically, doing less — but doing it with full focus — produces more results than doing everything at half capacity.</p>
+    <p><strong>Simplification is not a retreat. It's an engineering decision.</strong> You're removing parts that create friction so the parts that drive results can work without resistance.</p>
+  </div>
+  <main class="fade f4">
+    <h2 class="section-title">The complexity trap</h2>
+
+    <p class="prose">There's a natural tendency in any building process to keep adding. More habits. More commitments. More structure. More tracking. Each addition seems reasonable in isolation. But collectively, they create a system that's heavy, fragile, and exhausting to maintain.</p>
+
+    <p class="prose">Think about where you are right now. Over 11 days, you've installed: a direction statement, daily indicators, a three-anchor structure, pattern awareness, non-negotiables, a tracker, environmental changes, an identity statement, a priority stack, keystone habits, and energy management. That's substantial infrastructure.</p>
+
+    <p class="prose">Some of it is probably working brilliantly. Some may be creating friction without adding value. And some may have been quietly abandoned — it faded because there was too much to maintain. <strong>Complexity is the enemy of consistency.</strong> Today you cut back to what works.</p>
+
+    <h2 class="section-title">The friction audit</h2>
+
+    <p class="prose">Go through every component you've built and ask three questions:</p>
+
+    <p class="prose"><strong>Is it active?</strong> Am I actually doing this daily, or has it become something I think about but don't execute? A component that exists in theory but not in practice is dead weight. Either recommit or remove it. Carrying dead commitments is worse than having fewer commitments — the dead ones create guilt without producing results.</p>
+
+    <p class="prose"><strong>Is it producing results?</strong> Can I point to a specific positive outcome from this component? Does my tracker data show improvement connected to it? If a habit has been running for a week without visible impact, it might be targeting the wrong leverage point.</p>
+
+    <p class="prose"><strong>Could it be simpler?</strong> A 45-minute morning routine completed 60% of the time is less effective than a 15-minute version completed every day. A 5-item non-negotiable list hit 3 out of 5 is less valuable than a 3-item list hit 100%. Look for complexity you can strip without losing the core value.</p>
+
+    <div class="callout">
+      <p><strong>The 80/20 of your system:</strong> Roughly 20% of the components you've built are producing 80% of the results. Your job today is to identify which 20% is doing the heavy lifting — and seriously question whether the other 80% is earning its place or just adding noise.</p>
+    </div>
+
+    <h2 class="section-title">The one-page test</h2>
+
+    <p class="prose">After today's audit, your entire active system should fit on one page. Not a dense, tiny-font page — a readable, clear page. Direction statement. Identity statement. Top 3 priorities. Daily structure. Non-negotiables. Keystone habits. Energy alignment.</p>
+
+    <p class="prose">If you look at that page and feel calm clarity, the system is right. If you look at it and feel overwhelmed, keep simplifying. The system should feel like a tool that serves you — not a second job that demands your attention.</p>
+
+    <div class="example weak">
+      <div class="example-tag">Over-engineered</div>
+      <blockquote>"I have 7 non-negotiables, 4 keystone habits, a 90-minute morning routine, 5 active priorities, and I'm tracking 12 different metrics daily. I spend 20 minutes each evening just logging everything."</blockquote>
+      <p class="example-note">This system is working against itself. The maintenance cost is too high. Tracking has become a task rather than a tool. Simplify aggressively.</p>
+    </div>
+
+    <div class="example strong">
+      <div class="example-tag">Lean and effective</div>
+      <blockquote>"3 non-negotiables, 2 keystone habits, a 20-minute morning sequence, 3 priorities, 2-minute evening log. Everything fits on one page. I never feel overwhelmed by the system itself."</blockquote>
+      <p class="example-note">Lean enough to maintain indefinitely. Simple enough that the system disappears into the background and the work takes center stage.</p>
+    </div>
+
+    <h2 class="section-title">The art of elimination</h2>
+
+    <p class="prose">Eliminating something you've built feels like failure. It's not. It's data-driven iteration. The most successful companies in the world constantly kill features, products, and initiatives that aren't producing results — not because they were bad ideas, but because maintaining them costs more than they return.</p>
+
+    <p class="prose">Your system follows the same principle. Every component has a cost (time, energy, attention) and a return (progress toward your direction). If the cost exceeds the return, the component goes — regardless of how good it sounded when you created it.</p>
+
+    <p class="prose">This is the Law of Forced Efficiency in practice. By constraining your system to only what works, you force every remaining component to carry its weight. The result is a leaner, faster, more consistent operating system.</p></main>
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
+  <div class="fade f7">
+    <h2 class="tasks-title">What to do today</h2>
+    <p class="tasks-subtitle">Complete all tasks before moving to Day 13.</p>
+  </div>
+  
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Audit your non-negotiables</div>
+      <div class="task-desc">Look at your Day 4 list and your tracker data. Which ones are you hitting consistently? Which are you missing? Drop or simplify any that aren't sticking. Better to have 3 you complete daily than 5 you complete sometimes.</div>
+      
+    </div>
   </div>
 
-  <main class="lesson-content">
-
-    <h2 class="section-title">The weight of unnecessary complexity</h2>
-    <p class="prose">Over the past 11 days, you've added a lot: direction, structure, non-negotiables, habits, tracking, identity, priorities. Some of these components are driving real progress. Some may be creating friction you don't need.</p>
-    <p class="prose">Complexity is the enemy of consistency. Every unnecessary element is another thing that can break, another decision that drains energy, another commitment that competes for attention.</p>
-    <p class="prose"><strong>Simplification isn't quitting — it's engineering.</strong> You're removing the parts that don't contribute so the parts that do can work better.</p>
-
-    <h2 class="section-title">How to run a friction audit</h2>
-    <p class="prose">Go through every component you've built and ask three questions:</p>
-    <p class="prose"><strong>Is this driving progress toward my direction?</strong> If you can't clearly connect it to your Day 1 direction or your top 3 priorities, it's a candidate for removal.</p>
-    <p class="prose"><strong>Am I actually doing this consistently?</strong> If you've already stopped doing it, that's information. Either recommit or remove it. Carrying dead commitments is worse than having fewer commitments.</p>
-    <p class="prose"><strong>Could this be simpler?</strong> A 45-minute morning routine that you skip half the time is less effective than a 15-minute one you do every day.</p>
-
-
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
-
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 13.</p>
-
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Audit your non-negotiables</div>
-        <div class="task-desc">Look at your Day 4 list. Are you hitting all of them? Drop or simplify any that aren't sticking. Better to have 3 you do daily than 5 you do sometimes.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Audit your keystone habits</div>
+      <div class="task-desc">Review the habits from Day 10. Keep the ones driving real results. Pause any that feel forced or aren't connecting to your priorities. You can always reinstall them later — but right now, only what works stays.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Audit your habits</div>
-        <div class="task-desc">Review the keystone habits from Day 10. Keep the ones that are driving real results. Pause any that feel forced or aren't connecting to your priorities.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Audit your daily structure</div>
+      <div class="task-desc">Is your Day 2 framework still realistic given what you now know about your energy (Day 11) and your actual patterns? Adjust timing, simplify routines, remove any structural elements that consistently fail.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Audit your structure</div>
-        <div class="task-desc">Is your daily framework from Day 2 still realistic? Adjust based on what you now know about your energy (Day 11) and your actual patterns.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Create your one-page system overview</div>
+      <div class="task-desc">Write a clean, updated summary of everything currently active: direction, identity, top 3 priorities, daily structure, non-negotiables, keystone habits, energy notes. If it doesn't fit on one page, simplify further.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Create your simplified system overview</div>
-        <div class="task-desc">Write a clean, updated list of everything that's currently active in your system: direction, identity, top 3 priorities, daily structure, non-negotiables, and habits. If it doesn't fit on one page, simplify further.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Identify what you're eliminating and why</div>
+      <div class="task-desc">For everything you're cutting, write one sentence about why. This prevents you from second-guessing the decision later and creates a record of your engineering process.</div>
+      
     </div>
-
-
-    <div class="closing phase-2-style fade f8">
-    <p>Your system should feel lighter now. Not weaker — leaner. Every component that remains has earned its place through 12 days of real use.</p>
-    <p>Tomorrow, you build a framework for making decisions faster — so you stop wasting energy on choices you could resolve once and for all.</p>
-    <p><strong>Less is not a compromise. Less done consistently is the entire strategy.</strong></p>
-    </div>
-
-  </main>
-
-  <a href="day-13.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 13</div>
-      <div class="next-title">Build your decision framework</div>
-    </div>
-    <span class="next-arrow">→</span>
-  </a>
-
+  </div>
+  <div class="closing phase-2-style fade f8">
+    <p>Your system should feel lighter now. Not weaker — leaner. Every component that remains has earned its place through 12 days of real use and honest evaluation.</p>
+    <p>This is a skill you'll use permanently. Every month, every quarter, the system needs to be audited and simplified. What worked last month might not work next month. What mattered three months ago might not matter now. The willingness to eliminate is what keeps the system alive and relevant.</p>
+    <p>Tomorrow, you build a framework for making decisions faster — so you stop wasting energy on choices you could resolve once and never think about again.</p>
+    <p><strong>Less is not a compromise. Less done consistently is the entire strategy.</strong></p></div>
+  <a href="day-13.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 13</div><div class="next-title">Build your decision framework</div></div><span class="next-arrow">→</span></a>
   <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
+    <span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span>
     <span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
-
 </div>
-
 </body>
 </html>

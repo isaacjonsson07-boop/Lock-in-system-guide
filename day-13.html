@@ -4,674 +4,503 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 13 — Build Your Decision Framework | Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Structured Achievement — Lesson Template Styles */
-/* Shared across all 21 days of the Installation Corridor */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #1E1F23;
-  --bg-warm: #24252A;
-  --bg-lift: #2A2B31;
-  --bg-glow: #2F3037;
-  --cream: #F0EDE6;
-  --cream-soft: #C8C4BC;
-  --cream-muted: #8E8B84;
-  --cream-faint: #5C5A55;
-  --gold: #C9A96E;
-  --gold-soft: rgba(201, 169, 110, 0.12);
-  --gold-border: rgba(201, 169, 110, 0.25);
-  --green: #7DB88F;
-  --green-soft: rgba(125, 184, 143, 0.1);
-  --green-border: rgba(125, 184, 143, 0.22);
-  --rose-soft: rgba(194, 120, 120, 0.08);
-  --rose-border: rgba(194, 120, 120, 0.2);
-  --rose-muted: #B08080;
-  --blue: #7B9FD4;
-  --blue-soft: rgba(123, 159, 212, 0.10);
-  --blue-border: rgba(123, 159, 212, 0.22);
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-html {
-  font-size: 17px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--sans);
-  line-height: 1.8;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 28px 100px;
-}
-
-@media (max-width: 640px) {
-  html { font-size: 16px; }
-  .page { padding: 40px 20px 80px; }
-}
-
-/* === NAV === */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(240, 237, 230, 0.07);
-}
-
-.nav-brand {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-}
-
-.nav-day {
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--cream-muted);
-}
-
-.nav-day strong {
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* === PROGRESS === */
-.progress {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-}
-
-.progress-segment {
-  flex: 1;
-  height: 2px;
-  border-radius: 1px;
-  background: rgba(240, 237, 230, 0.06);
-}
-
-.progress-segment.filled { background: var(--gold); }
-.progress-segment.filled-blue { background: var(--blue); }
-.progress-segment.filled-green { background: var(--green); }
-
-/* === HERO === */
-.hero { margin-bottom: 56px; }
-
-.hero-phase {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero-phase::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.phase-2-color { color: var(--blue); }
-.phase-2-color::before { background: var(--blue); }
-.phase-3-color { color: var(--green); }
-.phase-3-color::before { background: var(--green); }
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--cream);
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-}
-
-.hero-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.75;
-  max-width: 540px;
-}
-
-@media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
-}
-
-/* === PRINCIPLE === */
-.principle {
-  border-top: 1px solid var(--gold-border);
-  border-bottom: 1px solid var(--gold-border);
-  padding: 36px 0;
-  margin: 8px 0 56px;
-}
-
-.principle.phase-2-border {
-  border-top-color: var(--blue-border);
-  border-bottom-color: var(--blue-border);
-}
-
-.principle.phase-3-border {
-  border-top-color: var(--green-border);
-  border-bottom-color: var(--green-border);
-}
-
-.principle-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.principle-label.phase-2-color { color: var(--blue); }
-.principle-label.phase-3-color { color: var(--green); }
-
-.principle p {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.principle p:last-child { margin-bottom: 0; }
-
-.principle p strong {
-  color: var(--cream);
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* === BODY TEXT === */
-.prose {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.85;
-  margin-bottom: 20px;
-}
-
-.prose strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.prose em {
-  font-style: italic;
-  color: var(--cream);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin: 60px 0 20px;
-  letter-spacing: -0.005em;
-}
-
-/* === EXAMPLES === */
-.example {
-  border-radius: 10px;
-  padding: 22px 26px;
-  margin: 20px 0;
-}
-
-.example.weak {
-  background: var(--rose-soft);
-  border: 1px solid var(--rose-border);
-}
-
-.example.strong {
-  background: var(--green-soft);
-  border: 1px solid var(--green-border);
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.weak .example-tag { color: var(--rose-muted); }
-.strong .example-tag { color: var(--green); }
-
-.example blockquote {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--cream-soft);
-  line-height: 1.65;
-}
-
-/* === DIVIDER === */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 64px 0 40px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(240, 237, 230, 0.07);
-}
-
-.divider-icon {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--cream-faint);
-  transform: rotate(45deg);
-}
-
-/* === TASKS === */
-.tasks-title {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
-.tasks-subtitle {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-.task {
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  padding: 26px 28px;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: border-color 0.25s ease;
-}
-
-.task:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-}
-
-.check {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--cream-faint);
-  margin-top: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.check:hover { border-color: var(--gold); }
-
-.check.done {
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.check.done svg { display: block; }
-.check svg { display: none; width: 13px; height: 13px; }
-
-.task-content { flex: 1; }
-
-.task-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.task-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.7;
-}
-
-.task-desc + .task-desc { margin-top: 4px; }
-
-.task-hint {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-top: 10px;
-}
-
-/* === CLOSING NOTE === */
-.closing {
-  background: var(--gold-soft);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 30px 32px;
-  margin: 52px 0;
-}
-
-.closing.phase-2-style {
-  background: var(--blue-soft);
-  border-color: var(--blue-border);
-}
-
-.closing.phase-3-style {
-  background: var(--green-soft);
-  border-color: var(--green-border);
-}
-
-.closing p {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--cream-soft);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.closing p:last-child { margin-bottom: 0; }
-
-.closing p strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-/* === NEXT LESSON === */
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 28px;
-  background: var(--bg-warm);
-  border: 1px solid rgba(240, 237, 230, 0.06);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  margin-top: 48px;
-}
-
-.next:hover {
-  border-color: rgba(240, 237, 230, 0.12);
-  background: var(--bg-lift);
-}
-
-.next-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cream-muted);
-  margin-bottom: 6px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-}
-
-.next-arrow {
-  font-size: 1.4rem;
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-
-.next:hover .next-arrow { transform: translateX(5px); }
-
-/* === FOOTER === */
-.foot {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.foot-phase {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--cream-faint);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.foot-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.foot-dot.on-gold { background: var(--gold); }
-.foot-dot.on-blue { background: var(--blue); }
-.foot-dot.on-green { background: var(--green); }
-.foot-dot.off { background: rgba(240, 237, 230, 0.1); }
-
-/* === ANIMATIONS === */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.f1 { animation-delay: 0s; }
-.f2 { animation-delay: 0.08s; }
-.f3 { animation-delay: 0.12s; }
-.f4 { animation-delay: 0.2s; }
-.f5 { animation-delay: 0.28s; }
-.f6 { animation-delay: 0.36s; }
-.f7 { animation-delay: 0.42s; }
-.f8 { animation-delay: 0.5s; }
-.f9 { animation-delay: 0.58s; }
-
-@keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === APP CALLOUT (from Day 5 onward) === */
-.app-callout {
-  background: var(--bg-warm);
-  border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  transition: border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.app-callout:hover {
-  border-color: var(--gold);
-}
-
-.app-callout-text {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--cream-soft);
-}
-
-.app-callout-text strong {
-  color: var(--cream);
-  font-weight: 500;
-}
-
-.app-callout-arrow {
-  color: var(--gold);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E1F23;
+      --bg-warm: #24252A;
+      --bg-lift: #2A2B31;
+      --cream: #FAF8F3;
+      --cream-soft: #E0DDD6;
+      --cream-muted: #B0ADA5;
+      --cream-faint: #787570;
+      --gold: #C9A96E;
+      --gold-soft: rgba(201, 169, 110, 0.12);
+      --gold-border: rgba(201, 169, 110, 0.25);
+      --green: #5ADB7E;
+      --green-soft: rgba(90, 219, 126, 0.14);
+      --green-border: rgba(90, 219, 126, 0.30);
+      --rose-soft: rgba(230, 100, 100, 0.12);
+      --rose-border: rgba(230, 100, 100, 0.25);
+      --rose-muted: #E07070;
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --blue-border: rgba(109, 181, 245, 0.30);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+    }
+
+    @media (max-width: 860px) {
+      .page { max-width: 100%; padding: 56px 28px 100px; }
+    }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .page { padding: 40px 20px 80px; }
+    }
+
+    /* === NAV === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(240,237,230,0.07);
+    }
+
+    .nav-brand {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .nav-day { font-size: 0.72rem; color: var(--cream-muted); }
+    .nav-day strong { color: var(--gold); font-weight: 500; }
+
+    /* === PROGRESS === */
+    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
+    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
+    .progress-segment.filled { background: var(--gold); }
+
+    /* === HERO === */
+    .hero { margin-bottom: 56px; }
+
+    .hero-phase {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-phase::before {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2rem; }
+    }
+
+    /* === PRINCIPLE === */
+    .principle {
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 36px 0;
+      margin: 8px 0 56px;
+    }
+
+    .principle-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .principle p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .principle p:last-child { margin-bottom: 0; }
+    .principle p strong { color: var(--cream); font-style: normal; font-weight: 500; }
+
+    /* === BODY TEXT === */
+    .prose {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .prose strong { color: var(--cream); font-weight: 500; }
+    .prose em { font-style: italic; color: var(--cream); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 60px 0 20px;
+    }
+
+    /* === CALLOUT === */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .callout p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p strong { color: var(--cream); font-weight: 500; }
+
+    /* === EXAMPLES === */
+    .example {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+    }
+
+    .example.weak {
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+    }
+
+    .example.strong {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+    }
+
+    .example-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .weak .example-tag { color: var(--rose-muted); }
+    .strong .example-tag { color: var(--green); }
+
+    .example blockquote {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      line-height: 1.65;
+    }
+
+    .example .example-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 64px 0 40px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(240,237,230,0.07);
+    }
+
+    .divider-icon {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--cream-faint);
+      transform: rotate(45deg);
+    }
+
+    /* === TASKS === */
+    .tasks-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .tasks-subtitle {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      margin-bottom: 32px;
+    }
+
+    .task {
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.25s ease;
+    }
+
+    .task:hover { border-color: rgba(240,237,230,0.12); }
+
+    .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cream-faint);
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check:hover { border-color: var(--gold); }
+    .check.done { border-color: var(--green); background: var(--green); }
+    .check.done svg { display: block; }
+    .check svg { display: none; width: 13px; height: 13px; }
+
+    .task-content { flex: 1; }
+    .task-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .task-desc { font-size: 0.85rem; font-weight: 300; color: var(--cream-soft); line-height: 1.7; }
+    .task-hint { display: inline-block; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--cream-muted); margin-top: 10px; }
+
+    /* === CLOSING === */
+    .closing {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 30px 32px;
+      margin: 52px 0;
+    }
+
+    .closing p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child { margin-bottom: 0; }
+    .closing p strong { color: var(--cream); font-weight: 500; }
+
+    /* === NEXT === */
+    .next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      margin-top: 48px;
+    }
+
+    .next:hover { border-color: rgba(240,237,230,0.12); background: var(--bg-lift); }
+    .next-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 6px; }
+    .next-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); }
+    .next-arrow { font-size: 1.4rem; color: var(--gold); transition: transform 0.2s ease; }
+    .next:hover .next-arrow { transform: translateX(5px); }
+
+    /* === FOOTER === */
+    .foot { display: flex; justify-content: center; gap: 24px; margin-top: 48px; }
+    .foot-phase { font-size: 0.68rem; color: var(--cream-faint); display: flex; align-items: center; gap: 7px; }
+    .foot-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .foot-dot.on { background: var(--gold); }
+    .foot-dot.off { background: rgba(240,237,230,0.1); }
+
+    /* === ANIMATIONS === */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .f1 { animation-delay: 0s; } .f2 { animation-delay: 0.08s; } .f3 { animation-delay: 0.12s; }
+    .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
+    .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
 <div class="page">
-
-  <nav class="nav fade f1">
-    <span class="nav-brand">Structured Achievement</span>
-    <span class="nav-day"><strong>Day 13</strong> of 21</span>
-  </nav>
-
-  <div class="progress fade f1">
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment filled-blue"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-    <div class="progress-segment"></div>
-  </div>
-
+  <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 13</strong> of 21</span></nav>
+  <div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
   <div class="hero fade f2">
     <div class="hero-phase phase-2-color">Phase II — Reconstruct</div>
     <h1 class="hero-title">Build Your<br>Decision Framework</h1>
-    <p class="hero-intro">One of the biggest drains on your energy isn't bad decisions — it's unmade ones. The same choices coming back every day, never resolved. Today you create rules that decide for you.</p>
+    <p class="hero-intro">One of the biggest drains on your energy and focus isn't bad decisions — it's unmade ones. The same choices recycling through your mind every day, never fully resolved. Today you create rules that decide for you, freeing your brain for the decisions that actually matter.</p>
   </div>
-
   <div class="principle phase-2-border fade f3">
     <div class="principle-label phase-2-color">The Law of Determination</div>
-      <p>Decisiveness is a characteristic of high-performing people. Almost any decision is better than no decision at all.</p>
-      <p>When you create rules for recurring decisions, you <strong>free your energy for the decisions that actually matter</strong>.</p>
+    
+    <p>Decisiveness is a characteristic of all high-performing men and women. Almost any decision is better than no decision at all. The habit of making decisions quickly and changing them slowly is a hallmark of people who achieve extraordinary things.</p>
+    <p>Most people do the opposite. They make decisions slowly — or not at all — and change them quickly when discomfort arises. This creates a life of chronic indecision, where energy is consumed not by action but by <strong>the endless deliberation about whether to act</strong>.</p>
+    <p>Decision rules eliminate this drain. When you pre-decide your response to recurring situations, you free enormous mental capacity for the decisions that genuinely require your judgment.</p>
+  </div>
+  <main class="fade f4">
+    <h2 class="section-title">The hidden cost of decisions</h2>
+
+    <p class="prose">Every decision you make — no matter how small — costs cognitive energy. What to eat for breakfast. When to check email. Whether to accept a meeting request. How to respond to a message. Whether to work out now or later. What to work on first.</p>
+
+    <p class="prose">Each of these seems trivial. But research on decision fatigue shows that the cumulative cost is enormous. By mid-afternoon, most people have made hundreds of micro-decisions and have significantly depleted their cognitive resources. The quality of their decisions drops. Their willpower weakens. They default to whatever is easiest rather than whatever is best.</p>
+
+    <p class="prose">This is why you make great food choices at 8 AM and terrible ones at 8 PM. It's why you can resist distraction in the morning but cave to your phone in the afternoon. It's not a character flaw — it's a resource problem. Your decision-making capacity is finite, and you've been spending it on choices that don't deserve it.</p>
+
+    <p class="prose"><strong>High performers don't have more willpower. They have fewer decisions.</strong> They've pre-decided. They've built rules that handle the routine automatically, preserving their cognitive energy for the strategic choices that actually require judgment.</p>
+
+    <h2 class="section-title">Types of decision rules</h2>
+
+    <p class="prose">A decision rule is a pre-made choice for a situation that comes up regularly. It removes deliberation and replaces it with a clear, automatic response. There are three categories:</p>
+
+    <p class="prose"><strong>Time rules</strong> govern when things happen. "I never schedule meetings before 11 AM." "I check email twice a day — noon and 5 PM." "I stop working by 9 PM, no exceptions." These rules protect your time by eliminating the daily negotiation about how to spend it.</p>
+
+    <p class="prose"><strong>Commitment rules</strong> govern what you say yes and no to. "If it doesn't serve my top 3 priorities, the answer is no." "I don't take on new commitments without sleeping on it first." "If someone asks for a favor that takes more than 30 minutes, I check my capacity before answering." These rules protect your energy by preventing overcommitment.</p>
+
+    <p class="prose"><strong>Behavior rules</strong> govern your daily defaults. "I eat the same breakfast every weekday." "I don't check my phone during meals." "If I'm tempted to skip a non-negotiable, I do a 5-minute version instead of skipping entirely." These rules automate the small decisions that would otherwise drain you throughout the day.</p>
+
+    <div class="callout">
+      <p><strong>Why the best rules feel boring:</strong> Effective decision rules are not exciting. "I eat the same lunch every workday" sounds monotonous. But that monotony is the point — every decision you automate is one less decision competing for your limited cognitive resources. Steve Jobs wore the same outfit every day not because he lacked style, but because he understood that decision energy spent on clothing was decision energy unavailable for Apple. The principle scales to everything.</p>
+    </div>
+
+    <h2 class="section-title">If-then rules for your weak points</h2>
+
+    <p class="prose">The most powerful decision rules are "if-then" statements that specifically address your known vulnerabilities. You mapped these on Day 3 — your default patterns. Now you can create automatic responses that override them.</p>
+
+    <p class="prose">The format is simple: <strong>"If [trigger situation], then [predetermined response]."</strong></p>
+
+    <p class="prose">"If I feel like skipping my workout, then I do 10 minutes minimum." The rule doesn't say you have to do the full workout. It says you have to start. And starting is almost always the hardest part — once you're moving, momentum usually carries you further.</p>
+
+    <p class="prose">"If someone asks me to take on a task that conflicts with my priorities, then I say 'let me check my schedule and get back to you tomorrow.'" This creates a buffer between the request and your response, preventing the default "yes" that leads to overcommitment.</p>
+
+    <p class="prose">"If I'm still working past 9 PM, then I stop immediately and do my evening close-out." This prevents the "just one more thing" pattern that destroys your sleep schedule and morning routine.</p>
+
+    <p class="prose">Each if-then rule takes a known failure point and installs an automatic bypass. You don't have to think in the moment. The rule already decided for you.</p>
+
+    <h2 class="section-title">Rules are not rigidity</h2>
+
+    <p class="prose">Decision rules might sound inflexible. They're not. They're defaults — strong defaults that you follow automatically unless there's a genuine reason not to. The key word is genuine. "I don't feel like it" is not a genuine reason. "There's a legitimate emergency" is.</p>
+
+    <p class="prose">The rules handle the 95% of situations that are routine, predictable, and don't require judgment. The other 5% — the genuinely novel, complex, or high-stakes decisions — get your full, undepleted attention. That's the trade. You automate the routine so you can be fully present for the exceptional.</p></main>
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
+  <div class="fade f7">
+    <h2 class="tasks-title">What to do today</h2>
+    <p class="tasks-subtitle">Complete all tasks before moving to Day 14.</p>
+  </div>
+  
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Identify your top 5 recurring decisions</div>
+      <div class="task-desc">What choices do you face repeatedly — daily or weekly — that consume energy through deliberation? List them. These might include: what to eat, when to exercise, whether to check your phone, how to respond to requests, what to work on first.</div>
+      
+    </div>
   </div>
 
-  <main class="lesson-content">
-
-    <h2 class="section-title">Decision fatigue is real</h2>
-    <p class="prose">Every decision you make — no matter how small — costs energy. What to eat, when to work out, whether to check email, how to respond to a request, what to work on first. By mid-afternoon, most people have made hundreds of micro-decisions and have nothing left for the ones that count.</p>
-    <p class="prose">High performers don't have more willpower. They have fewer decisions. They've pre-decided. <strong>They built rules that handle the routine so their mind stays free for the strategic.</strong></p>
-
-    <h2 class="section-title">How to create decision rules</h2>
-    <p class="prose">A decision rule is a pre-made choice for a situation that comes up regularly. It removes deliberation and replaces it with a clear, automatic response.</p>
-    <p class="prose"><strong>Time rules:</strong> "I never schedule meetings before 11 AM." "I check email twice a day — noon and 5 PM."</p>
-    <p class="prose"><strong>Commitment rules:</strong> "If it's not connected to my top 3 priorities, the answer is no." "I don't take on new commitments without sleeping on it first."</p>
-    <p class="prose"><strong>Behavior rules:</strong> "I eat the same breakfast every weekday." "I never work past 9 PM." "If I'm tempted to skip a non-negotiable, I do a 5-minute version instead."</p>
-    <p class="prose">The best rules feel almost boring. That's the point — they remove the drama from decisions that don't deserve drama.</p>
-
-
-    <div class="divider fade f6"><div class="divider-icon"></div></div>
-
-    <h2 class="tasks-title fade f7">What to do today</h2>
-    <p class="tasks-subtitle fade f7">Complete these before moving to Day 14.</p>
-
-
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Identify your top 5 recurring decisions</div>
-        <div class="task-desc">What choices do you face over and over? What do you waste time deliberating about regularly? List them.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Create a rule for each one</div>
+      <div class="task-desc">For each recurring decision, write a clear rule that eliminates the deliberation. Keep it simple and absolute. The less ambiguity, the more automatic it becomes.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Create a rule for each one</div>
-        <div class="task-desc">For each recurring decision, write a clear rule that eliminates the need to think about it. Keep it simple and absolute.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Write 3-5 if-then rules for your weak points</div>
+      <div class="task-desc">Revisit your Day 3 defaults. For each pattern that still shows up, create an if-then rule: 'If [trigger], then [response].' Focus on the situations where you're most likely to fall back into old patterns.</div>
+      <span class="task-hint">"If I feel like checking social media during core block, then I note the urge and return to my task."</span>
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Write a personal "if-then" list</div>
-        <div class="task-desc">Create 3–5 if-then statements for situations that typically derail you. "If I feel like skipping my workout, then I do 10 minutes minimum." "If someone asks for a favor that conflicts with my priorities, then I say I'll think about it and respond tomorrow."</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Test one rule today</div>
+      <div class="task-desc">Choose the rule that addresses your most frequent recurring decision. Apply it today. Notice how it feels to not deliberate — to simply execute the rule. The initial discomfort is normal. The energy savings are immediate.</div>
+      
     </div>
+  </div>
 
-    <div class="task fade f7">
-      <div class="check" onclick="this.classList.toggle('done')">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
-      </div>
-      <div class="task-content">
-        <div class="task-name">Add your rules to your system overview</div>
-        <div class="task-desc">These decision rules become part of your operating manual. Write them alongside your structure, non-negotiables, and priorities.</div>
-      </div>
+  <div class="task fade f7">
+    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Add your rules to your system overview</div>
+      <div class="task-desc">Decision rules are now part of your operating manual. Add them to the one-page overview from Day 12. They sit alongside your structure, non-negotiables, and habits as part of your daily operating infrastructure.</div>
+      
     </div>
-
-
-    <div class="closing phase-2-style fade f8">
-    <p>You've just eliminated dozens of future energy drains. Every decision rule you created today is one less negotiation with yourself tomorrow.</p>
-    <p>Tomorrow is your midpoint review — Day 14. Two full weeks of building. You'll assess everything you've installed, recalibrate what needs it, and prepare for the final phase.</p>
-    <p><strong>Notice how many decisions you make tomorrow. Your rules should already be handling some of them.</strong></p>
-    </div>
-
-  </main>
-
-  <a href="day-14.html" class="next fade f9">
-    <div>
-      <div class="next-eyebrow">Tomorrow — Day 14</div>
-      <div class="next-title">Midpoint recalibration</div>
-    </div>
-    <span class="next-arrow">→</span>
-  </a>
-
+  </div>
+  <div class="closing phase-2-style fade f8">
+    <p>You've just eliminated dozens of future energy drains. Every decision rule you created today is one less negotiation with yourself tomorrow, next week, and next month.</p>
+    <p>Tomorrow is your midpoint review — Day 14. Two full weeks of building, testing, and refining. You'll assess everything you've installed, recalibrate what needs it, and prepare for the final phase that locks everything in permanently.</p>
+    <p><strong>Notice how many decisions you make tomorrow. Watch for the ones your rules already handle. That automatic efficiency is what compound discipline feels like.</strong></p></div>
+  <a href="day-14.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 14</div><div class="next-title">Midpoint recalibration</div></div><span class="next-arrow">→</span></a>
   <div class="foot fade f9">
-    <span class="foot-phase"><span class="foot-dot on-gold"></span>Stabilize</span>
+    <span class="foot-phase"><span class="foot-dot on"></span>Stabilize</span>
     <span class="foot-phase"><span class="foot-dot on-blue"></span>Reconstruct</span>
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
-
 </div>
-
 </body>
 </html>
