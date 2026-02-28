@@ -76,9 +76,53 @@
     .nav-day strong { color: var(--gold); font-weight: 500; }
 
     /* === PROGRESS === */
-    .progress { display: flex; gap: 4px; margin-bottom: 48px; }
-    .progress-segment { flex: 1; height: 2px; border-radius: 1px; background: rgba(240,237,230,0.06); }
-    .progress-segment.filled { background: var(--gold); }
+    /* === PROGRESS NAV === */
+    .progress-nav { display: flex; gap: 3px; margin-bottom: 48px; }
+    .progress-link {
+      flex: 1; height: 20px; display: flex; align-items: center;
+      text-decoration: none; position: relative; cursor: pointer;
+      border-radius: 2px; transition: background 0.15s ease;
+    }
+    .progress-link:hover { background: rgba(240,237,230,0.06); }
+    .progress-link .bar {
+      width: 100%; height: 3px; border-radius: 1.5px;
+      background: rgba(240,237,230,0.06); transition: height 0.15s ease;
+    }
+    .progress-link:hover .bar { height: 5px; }
+    .progress-link.filled .bar { background: var(--gold); }
+    .progress-link.filled-blue .bar { background: var(--blue); }
+    .progress-link.filled-green .bar { background: var(--green); }
+    .progress-link.current .bar { height: 5px; }
+    .progress-link .tip {
+      display: none; position: absolute; bottom: calc(100% + 8px);
+      left: 50%; transform: translateX(-50%); background: var(--bg-warm);
+      border: 1px solid rgba(240,237,230,0.12); border-radius: 8px;
+      padding: 8px 14px; white-space: nowrap; z-index: 10; pointer-events: none;
+    }
+    .progress-link:hover .tip { display: block; }
+    .tip-day {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--cream-muted); margin-bottom: 2px;
+    }
+    .tip-title { font-size: 0.78rem; font-weight: 400; color: var(--cream); font-family: var(--serif); }
+    .tip::after {
+      content: ''; position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%); border: 5px solid transparent;
+      border-top-color: rgba(240,237,230,0.12);
+    }
+    /* Edge tooltips - keep on screen */
+    .progress-link:first-child .tip,
+    .progress-link:nth-child(2) .tip,
+    .progress-link:nth-child(3) .tip { left: 0; transform: none; }
+    .progress-link:first-child .tip::after,
+    .progress-link:nth-child(2) .tip::after,
+    .progress-link:nth-child(3) .tip::after { left: 12px; transform: none; }
+    .progress-link:last-child .tip,
+    .progress-link:nth-last-child(2) .tip,
+    .progress-link:nth-last-child(3) .tip { left: auto; right: 0; transform: none; }
+    .progress-link:last-child .tip::after,
+    .progress-link:nth-last-child(2) .tip::after,
+    .progress-link:nth-last-child(3) .tip::after { left: auto; right: 12px; transform: none; }
 
     /* === HERO === */
     .hero { margin-bottom: 56px; }
@@ -372,7 +416,31 @@
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 18</strong> of 21</span></nav>
-<div class="progress fade f1"><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-blue"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment filled-green"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div></div>
+  <div class="progress-nav fade f1">
+    <a href="day-01.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 1</div><div class="tip-title">Define Your Operating Direction</div></div></a>
+    <a href="day-02.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 2</div><div class="tip-title">Build Your Daily Structure</div></div></a>
+    <a href="day-03.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 3</div><div class="tip-title">Identify Your Defaults</div></div></a>
+    <a href="day-04.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 4</div><div class="tip-title">Set Your Non-Negotiables</div></div></a>
+    <a href="day-05.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 5</div><div class="tip-title">Introduce the Tracker</div></div></a>
+    <a href="day-06.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 6</div><div class="tip-title">Design Your Environment</div></div></a>
+    <a href="day-07.html" class="progress-link filled"><div class="bar"></div><div class="tip"><div class="tip-day">Day 7</div><div class="tip-title">Week One Review</div></div></a>
+    <a href="day-08.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 8</div><div class="tip-title">Define Your Operating Identity</div></div></a>
+    <a href="day-09.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 9</div><div class="tip-title">Architect Your Priorities</div></div></a>
+    <a href="day-10.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 10</div><div class="tip-title">Install Your Core Habits</div></div></a>
+    <a href="day-11.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 11</div><div class="tip-title">Manage Your Energy</div></div></a>
+    <a href="day-12.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 12</div><div class="tip-title">Eliminate and Simplify</div></div></a>
+    <a href="day-13.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 13</div><div class="tip-title">Build Your Decision Framework</div></div></a>
+    <a href="day-14.html" class="progress-link filled-blue"><div class="bar"></div><div class="tip"><div class="tip-day">Day 14</div><div class="tip-title">Midpoint Recalibration</div></div></a>
+    <a href="day-15.html" class="progress-link filled-green"><div class="bar"></div><div class="tip"><div class="tip-day">Day 15</div><div class="tip-title">Build Your Accountability Layer</div></div></a>
+    <a href="day-16.html" class="progress-link filled-green"><div class="bar"></div><div class="tip"><div class="tip-day">Day 16</div><div class="tip-title">Stress-Proof Your System</div></div></a>
+    <a href="day-17.html" class="progress-link filled-green"><div class="bar"></div><div class="tip"><div class="tip-day">Day 17</div><div class="tip-title">Master Your Internal Dialogue</div></div></a>
+    <a href="day-18.html" class="progress-link filled-green current"><div class="bar"></div><div class="tip"><div class="tip-day">Day 18</div><div class="tip-title">Design Your Weekly Review</div></div></a>
+    <a href="day-19.html" class="progress-link"><div class="bar"></div><div class="tip"><div class="tip-day">Day 19</div><div class="tip-title">Plan Your Monthly Recalibration</div></div></a>
+    <a href="day-20.html" class="progress-link"><div class="bar"></div><div class="tip"><div class="tip-day">Day 20</div><div class="tip-title">Consolidate Your Operating System</div></div></a>
+    <a href="day-21.html" class="progress-link"><div class="bar"></div><div class="tip"><div class="tip-day">Day 21</div><div class="tip-title">Activation Day</div></div></a>
+  </div>
+
+
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Design Your<br>Weekly Review</h1><p class="hero-intro">The installation ends on Day 21. What keeps the system alive after that is the review cycle. Today you build the single most important retention mechanism in the entire program — the habit that protects all the other habits.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Feedback</div><p>Continuous improvement requires continuous feedback. Without a regular mechanism to assess what's working and what isn't, even the best system gradually drifts off course — not because it failed, but because it stopped being actively maintained.</p>
 <p>The weekly review is that mechanism. It's not optional. It's not a nice-to-have. It is <strong>the heartbeat of your operating system</strong> — the single practice that keeps everything else calibrated, relevant, and alive.</p>
