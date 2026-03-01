@@ -423,6 +423,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head>
 <body>
@@ -467,6 +491,7 @@
     <p>Every great achievement is an accumulation of hundreds — sometimes thousands — of small efforts that no one sees or appreciates. Each individual effort may seem insignificant on its own. But compounded over time, they produce extraordinary results.</p>
     <p>This is one of the most important and least understood laws of achievement. People overestimate what they can accomplish in a day and dramatically underestimate what they can accomplish in a month of consistent daily action.</p>
     <p>The tracker makes this law visible. It takes the small, daily efforts that would otherwise disappear into memory and <strong>turns them into a visible, compounding record of who you're becoming</strong>.</p>
+  
   </div>
   <main class="fade f4">
     <h2 class="section-title">Why you need a record</h2>
@@ -512,6 +537,23 @@
     <p class="prose">This is the Law of Accumulation in action. Each individual log entry seems trivial. But the aggregate — the full record of 21 days — becomes one of the most valuable tools in your system. It tells you exactly what works, what doesn't, when you're strongest, when you struggle, and how far you've come from Day 1.</p>
 
     <p class="prose">Your Day 7 review (two days from now) will be your first opportunity to use this data. The quality of that review depends entirely on the quality of what you log between now and then. <strong>Start strong. Log honestly. The data is only useful if it's true.</strong></p></main>
+  
+    <h2 class="section-title">Setting up the app</h2>
+    <p class="prose">The Structured Achievement tracker has five core features, and today you'll set up three of them:</p>
+    <p class="prose"><strong>Goals</strong> — this is where your direction statement lives inside the app. Enter it as your primary goal. You'll also add your daily indicators here so you can check them off each day. Think of the Goals section as the strategic layer of the app — it holds your "why" and your "where."</p>
+    <p class="prose"><strong>Tasks</strong> — this is where your non-negotiables go. Add each one as a daily task. Every evening during your close-out, you'll open Tasks and check off what you completed. The binary nature of tasks — done or not done — matches the binary nature of non-negotiables. No partial credit.</p>
+    <p class="prose"><strong>Dashboard</strong> — this is your data command center. It shows your completion rates, your streaks, and your overall consistency. You won't have much data yet, but after a few days, this becomes the most valuable screen in the app. It's where feelings get replaced by facts.</p>
+    <p class="prose">You'll unlock the remaining features — <strong>Habits</strong> and <strong>Journal</strong> — over the coming days as you build those components into your system.</p>
+
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Open the Tracker</div>
+        <div class="app-card-desc">Set up your <strong>Goals</strong>, add your non-negotiables as <strong>Tasks</strong>, and log your first day.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+
   <div class="divider fade f6"><div class="divider-icon"></div></div>
   <div class="fade f7">
     <h2 class="tasks-title">What to do today</h2>
@@ -522,7 +564,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Set up your tracker</div>
-      <div class="task-desc">Open the Structured Achievement app and configure your profile. Enter your direction statement, your non-negotiables, and your daily indicators. Take 5 minutes to familiarize yourself with how logging works.</div>
+      <div class="task-desc">Open the Structured Achievement app. Go to <strong>Goals</strong> and enter your direction statement as your primary goal. Then go to <strong>Tasks</strong> and add each of your non-negotiables as a daily task. Take 5 minutes to explore the Dashboard — this is where your data will live.</div>
       
     </div>
   </div>
@@ -531,7 +573,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Log today as your first tracked day</div>
-      <div class="task-desc">Complete your non-negotiables today. During your evening close-out, open the tracker. Check off what you did. Write a one-sentence daily note. This is your first data point — Day 1 of your tracked record.</div>
+      <div class="task-desc">Complete your non-negotiables today. During your evening close-out, open the app and check off your completed <strong>Tasks</strong>. Then go to the <strong>Dashboard</strong> — you'll see your first data point. This is Day 1 of your tracked record.</div>
       
     </div>
   </div>

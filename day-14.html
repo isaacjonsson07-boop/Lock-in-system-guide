@@ -423,6 +423,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head>
 <body>
@@ -464,6 +488,15 @@
     <p>Success requires the flexibility to adapt your approach while keeping your goal constant. The direction stays fixed. The methods evolve based on feedback, experience, and changing conditions.</p>
     <p>Rigidity is not discipline — it's fragility. A system that can't adapt to what you've learned over 14 days of real-world testing is a system that will eventually break. <strong>The willingness to recalibrate is what separates a living system from a dead plan.</strong></p>
     <p>Today you exercise that flexibility deliberately — adjusting what needs adjusting while preserving what's working.</p>
+  
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Full Dashboard Review</div>
+        <div class="app-card-desc">Open the <strong>Dashboard</strong> for your midpoint assessment. 10 days of tracked data tells the real story.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
   </div>
   <main class="fade f4">
     <h2 class="section-title">Why this review is deeper than Day 7</h2>
@@ -523,7 +556,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Review your full tracker data</div>
-      <div class="task-desc">Look at every logged day from Day 5 through today. Calculate your non-negotiable completion rate as a percentage. Note patterns in consistency — which days are strong, which are weak, and why.</div>
+      <div class="task-desc">Open the <strong>Dashboard</strong> and study your full data set from Day 5 through today. Look at Task completion rates, Habit consistency, and your streak history. Calculate your overall percentages. The Dashboard shows the real story of your past 10 days — not the story your feelings tell.</div>
       
     </div>
   </div>
@@ -559,7 +592,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Write your midpoint status report</div>
-      <div class="task-desc">3-5 sentences. Where are you compared to Day 1? What's your biggest strength? What needs the most work? What are you carrying into Phase III? This goes into your installation record alongside your Day 7 report.</div>
+      <div class="task-desc">Open <strong>Journal</strong> and write your midpoint status report. Reference specific numbers from the Dashboard: Task completion rate, longest streak, Habit consistency. Compare to your Day 7 journal entry. This is your most data-rich assessment yet.</div>
       
     </div>
   </div>

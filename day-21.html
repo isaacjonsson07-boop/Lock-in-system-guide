@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 21</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">System Installed.<br>Activation Day.</h1><p class="hero-intro">Twenty-one days ago, you had a direction but no system. Now you have both — a complete, documented, stress-tested personal operating system built on the psychology of achievement and tailored entirely to your life. Today, the installation ends. Operational mode begins.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Cause and Effect</div><p>We return to where we started. Every result has a cause. Every outcome traces back to a decision, a pattern, or a system that produced it.</p>
 <p>Twenty-one days ago, you set the first cause — a clear direction. Every day since then, you've added another cause to the chain. Structure. Awareness. Discipline. Tracking. Environment. Identity. Priorities. Habits. Energy. Simplification. Decision rules. Accountability. Resilience. Self-talk mastery. Review cycles. Consolidation.</p>
-<p><strong>Today, the chain is complete. The system you built is now the cause of everything that follows.</strong></p></div>
+<p><strong>Today, the chain is complete. The system you built is now the cause of everything that follows.</strong></p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Final Dashboard Review</div>
+        <div class="app-card-desc">Open the <strong>Dashboard</strong> one last time as installation. Your streaks, data, and Journal tell the story of 21 days.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">The full scope of what you've built</h2>
 <p class="prose">Before you move into operational mode, take a moment to see — really see — the complete architecture of what you've created.</p>
@@ -479,8 +512,8 @@
 <div class="divider fade f6"><div class="divider-icon"></div></div>
 <div class="fade f7"><h2 class="tasks-title">What to do today</h2><p class="tasks-subtitle">Complete all tasks to finalize your installation.</p></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Run your final installation review</div><div class="task-desc">Open your operating manual. Read through every section. Confirm everything is current, clear, and accurate. This is your last check before operational mode begins. Make any final updates now.</div></div></div>
-<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Compare Day 1 to Day 21</div><div class="task-desc">Read your original Day 1 direction statement and indicators. Then read your current versions. Look at your first tracker entry and compare it to today's. Write down what's changed — not just in your system, but in how you think, operate, and view yourself.</div></div></div>
-<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Log your final installation entry</div><div class="task-desc">In your tracker, write a comprehensive summary. Where do you stand on Day 21? What's your non-negotiable completion rate over the full 21 days? What are you most proud of? What still needs work? This entry becomes your operational baseline.</div></div></div>
+<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Compare Day 1 to Day 21</div><div class="task-desc">Read your original Day 1 direction statement then your current version. Open the <strong>Dashboard</strong> — look at your streaks, your completion rates, your consistency across 17 tracked days. Open <strong>Journal</strong> and read your Day 7 and Day 14 entries. The evolution is documented. Write down what's changed.</div></div></div>
+<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Log your final installation entry</div><div class="task-desc">Open <strong>Journal</strong> and write your final installation entry. Reference your Dashboard data: overall Task completion rate, longest streak, Habit consistency, total Journal entries. This is your operational baseline — the benchmark for every future monthly recalibration.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Confirm your first weekly review</div><div class="task-desc">Verify the day, time, and calendar entry. Your first operational weekly review happens this week. It's the bridge between installation and permanent operation.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Confirm your first monthly recalibration</div><div class="task-desc">Put the exact date in your calendar. One month from today. This is non-negotiable. The monthly recalibration is what keeps the system evolving with you.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Make a commitment to yourself</div><div class="task-desc">Write one sentence — a commitment to continue operating this system. Not forever. Just until your next monthly recalibration. One month at a time. That's how permanent systems are built: one renewable commitment at a time.</div></div></div>

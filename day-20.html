@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 20</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Consolidate Your<br>Operating System</h1><p class="hero-intro">Twenty days of building. Every component, every principle, every decision — scattered across notes, your tracker, and your memory. Today, you bring it all together into one clear, complete document: your personal operating manual.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Clarity</div><p>The greater clarity you have about who you are and what you want, the more you accomplish in a shorter period of time. Clarity eliminates hesitation. It removes the friction of uncertainty. It turns intention into immediate action.</p>
 <p>Over 20 days, you've built tremendous clarity — about your direction, your identity, your priorities, your habits, your energy, your weak points, and your maintenance cycles. Today, <strong>all of that clarity gets consolidated into a single reference document</strong> that you can access in seconds and rely on for months.</p>
-<p>A system you can see in full is a system you can maintain in full. A system scattered across a dozen locations is a system waiting to fragment.</p></div>
+<p>A system you can see in full is a system you can maintain in full. A system scattered across a dozen locations is a system waiting to fragment.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Review Your Full System</div>
+        <div class="app-card-desc">The <strong>Dashboard</strong> is part of your operating manual. All your Goals, Habits, Tasks, and Journal entries — consolidated.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">Why consolidation matters</h2>
 <p class="prose">Over 20 days, you've created a lot of infrastructure. Direction statement. Identity statement. Daily indicators. Three-anchor structure. Non-negotiables. Keystone habits with cue-routine-reward formulas. Decision rules. If-then protocols. Energy alignment notes. Priority stack with outcomes. Minimum viable day. Restart protocol. Failure protocol. Sabotage scripts and replacements. Personal mantra. Weekly review template. Monthly recalibration template. Accountability structure.</p>
@@ -474,7 +507,22 @@
 <p class="prose">Your operating manual is not carved in stone. It's a living document that gets updated during every monthly recalibration. Direction evolves. Priorities shift. Habits mature. Decision rules get added or retired. The manual should always reflect your <em>current</em> operating system — not the version from a month ago.</p>
 <p class="prose">Store it somewhere permanent and accessible. A dedicated note in your phone. A document in your files. A printed page in a notebook. Whatever format ensures you can access it within 30 seconds at any time. If it's buried in a folder you never open, it's useless. If it's one tap or one glance away, it becomes a daily reference.</p>
 <p class="prose">Some people find it helpful to create two versions: a full version with all details and a wallet card version with just the essentials — direction, non-negotiables, mantra, and the weekly review day. The wallet card is what you carry. The full version is what you reference during reviews.</p></main>
-<div class="divider fade f6"><div class="divider-icon"></div></div>
+
+    <h2 class="section-title">The app as your operating manual</h2>
+    <p class="prose">You've been building your operating manual in your head and on paper. But a significant part of it already lives inside the Structured Achievement app — and it's been accumulating data since Day 5.</p>
+    <p class="prose"><strong>Goals</strong> holds your strategic layer: direction statement, identity statement, and priority outcomes. <strong>Tasks</strong> holds your daily execution layer: non-negotiables, weekly review trigger, and monthly recalibration trigger. <strong>Habits</strong> holds your growth engine: keystone habits with cue-routine-reward formulas. <strong>Journal</strong> holds your reflections: status reports, energy maps, decision rules, emergency protocols, and script replacements. <strong>Dashboard</strong> shows all of this in aggregate — completion rates, streaks, and patterns over time.</p>
+    <p class="prose">Together, the app and your written operating manual form a complete system. The manual is the reference document you read. The app is the execution interface you use daily. Neither replaces the other — they work together.</p>
+
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Review Your Full System</div>
+        <div class="app-card-desc">Open the <strong>Dashboard</strong> and review all your Goals, Habits, Tasks, and Journal entries. This is your complete data picture.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+
+  <div class="divider fade f6"><div class="divider-icon"></div></div>
 <div class="fade f7"><h2 class="tasks-title">What to do today</h2><p class="tasks-subtitle">Complete all tasks before moving to Day 21.</p></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Assemble your operating manual</div><div class="task-desc">Go through all 12 sections listed above. For each one, write or compile the current version of the component. Use your tracker data, your notes, and the updates you've made throughout the program. Take your time — this is the capstone document of the entire installation.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Review the complete system</div><div class="task-desc">Read through the entire manual start to finish. Does it feel coherent? Does each component connect to the others? Is everything current and accurate? Flag anything that needs updating or feels outdated.</div></div></div>

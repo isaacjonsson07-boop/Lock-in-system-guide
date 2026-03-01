@@ -423,6 +423,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head>
 <body>
@@ -464,6 +488,15 @@
     <p>Decisiveness is a characteristic of all high-performing men and women. Almost any decision is better than no decision at all. The habit of making decisions quickly and changing them slowly is a hallmark of people who achieve extraordinary things.</p>
     <p>Most people do the opposite. They make decisions slowly — or not at all — and change them quickly when discomfort arises. This creates a life of chronic indecision, where energy is consumed not by action but by <strong>the endless deliberation about whether to act</strong>.</p>
     <p>Decision rules eliminate this drain. When you pre-decide your response to recurring situations, you free enormous mental capacity for the decisions that genuinely require your judgment.</p>
+  
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Log Your Decision Rules</div>
+        <div class="app-card-desc">Write your decision rules and if-then protocols in the <strong>Journal</strong> for easy reference.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
   </div>
   <main class="fade f4">
     <h2 class="section-title">The hidden cost of decisions</h2>
@@ -559,6 +592,14 @@
       
     </div>
   </div>
+  <div class="task fade f7">
+    <div class="check"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Record your rules in the app</div>
+      <div class="task-desc">Open <strong>Journal</strong> and write a dedicated entry with your decision rules and if-then statements. Title it "Decision Rules" so you can find it quickly. When you're in a situation covered by a rule, you want to reference it in seconds, not search through notes.</div>
+    </div>
+  </div>
+
   <div class="closing phase-2-style fade f8">
     <p>You've just eliminated dozens of future energy drains. Every decision rule you created today is one less negotiation with yourself tomorrow, next week, and next month.</p>
     <p>Tomorrow is your midpoint review — Day 14. Two full weeks of building, testing, and refining. You'll assess everything you've installed, recalibrate what needs it, and prepare for the final phase that locks everything in permanently.</p>

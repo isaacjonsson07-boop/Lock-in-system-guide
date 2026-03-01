@@ -420,6 +420,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head><body>
 <div class="page">
@@ -457,7 +481,16 @@
   <div class="principle phase-2-border fade f3"><div class="principle-label phase-2-color">The Law of Practice</div>
     <p>Any thought, feeling, or behavior that you repeat often enough eventually becomes automatic. It requires no further effort, no conscious decision, and no willpower. It simply runs.</p>
     <p>This is both the power and the danger of habit. The same mechanism that makes destructive patterns automatic can make constructive ones automatic too. The Law of Practice doesn't care about the content of the habit — only the repetition.</p>
-    <p><strong>Your job is not to develop willpower. Your job is to practice the right behaviors until they no longer require willpower.</strong></p></div>
+    <p><strong>Your job is not to develop willpower. Your job is to practice the right behaviors until they no longer require willpower.</strong></p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Set Up Your Habits</div>
+        <div class="app-card-desc">Open the <strong>Habits</strong> feature and add your keystone habits with their cue-routine-reward formulas.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
   <main class="fade f4">
     <h2 class="section-title">From non-negotiables to keystone habits</h2>
 
@@ -517,7 +550,7 @@
   <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Identify 2–3 keystone habits tied to your priorities</div><div class="task-desc">For each of your top 3 priorities, identify the single daily behavior that would drive the most progress. Select the 2–3 that feel most impactful. These become your keystone habits.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Design each habit using cue-routine-reward</div><div class="task-desc">For each keystone habit, write the complete formula: "After [specific cue], I [specific routine], then [specific reward]." Be precise. The more specific the cue, the more automatic the habit becomes.</div><span class="task-hint">Stack onto existing anchors: morning sequence, core block, or evening close-out.</span></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Keep every routine under 30 minutes</div><div class="task-desc">If any routine feels long or ambitious, shrink it. A 15-minute routine you do every day for 14 days produces more results than a 60-minute routine you do 3 times and abandon. Consistency first. Scale later.</div></div></div>
-<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Add your keystone habits to the tracker</div><div class="task-desc">Update your tracker with these new habits alongside your non-negotiables. From today forward, you're tracking both — the floor (non-negotiables) and the growth engine (keystone habits).</div></div></div>
+<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Add your keystone habits to the tracker</div><div class="task-desc">Open the <strong>Habits</strong> section in the app and add each keystone habit. Include the cue-routine-reward formula in the description so you see it every time. From today, you're tracking both Tasks (non-negotiables) and Habits (growth engine). The Dashboard will show both.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Run your first keystone habit today</div><div class="task-desc">Don't wait until tomorrow. Pick one of your new habits and do it today, using the exact cue-routine-reward formula you designed. The first repetition is the most important one — it transforms the habit from an idea into an action.</div></div></div>
   <div class="closing phase-2-style fade f8">
     <p>You've now bridged the gap between strategy and execution. Your system has a strategic layer — direction, identity, priorities — and an operational layer — structure, non-negotiables, keystone habits, tracking. The two layers are connected: the strategy determines what the operations focus on, and the operations produce the results that validate the strategy.</p>

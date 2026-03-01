@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 16</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Stress-Proof<br>Your System</h1><p class="hero-intro">Everything works when conditions are favorable. The true test of a system is whether it survives when conditions are terrible. Today you design for the worst — not out of pessimism, but because every system that lasts has a contingency plan.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Persistence</div><p>The willingness to persist in the face of adversity is the one quality that, more than anything else, guarantees eventual success. Not talent. Not intelligence. Not resources. Persistence.</p>
 <p>But persistence is widely misunderstood. It's not about gritting your teeth and powering through at full intensity no matter what. That's how people burn out and quit permanently. True persistence is about <strong>having a plan that keeps you moving forward even when you can't operate at full capacity</strong>.</p>
-<p>Today you build that plan. So when the bad day comes — and it will — you don't break. You bend, you adapt, and you continue.</p></div>
+<p>Today you build that plan. So when the bad day comes — and it will — you don't break. You bend, you adapt, and you continue.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Log Your Protocols</div>
+        <div class="app-card-desc">Add your minimum viable day and restart protocol to the <strong>Journal</strong> for emergency access.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">Where systems actually break</h2>
 <p class="prose">Systems don't fail during good days. They fail at predictable stress points — moments you can identify and plan for in advance. These typically include:</p>

@@ -420,6 +420,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head><body>
 <div class="page">
@@ -457,7 +481,16 @@
   <div class="principle phase-2-border fade f3"><div class="principle-label phase-2-color">The Law of Belief</div>
     <p>Whatever you believe with conviction becomes your reality. You do not believe what you see — you see what you already believe. Your beliefs act as filters, shaping what you notice, what you attempt, and what you achieve.</p>
     <p>This is why two people with identical circumstances can produce completely different results. One believes they're capable and acts accordingly. The other believes they're limited and acts accordingly. Both are right — because <strong>belief drives behavior, and behavior produces results that confirm the belief</strong>.</p>
-    <p>The most powerful belief you hold is the belief about who you are — your identity. Change that belief, and everything downstream changes with it.</p></div>
+    <p>The most powerful belief you hold is the belief about who you are — your identity. Change that belief, and everything downstream changes with it.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Update Your Goals</div>
+        <div class="app-card-desc">Add your <strong>identity statement</strong> as a new Goal alongside your direction statement.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
   <main class="fade f4">
     <h2 class="section-title">Why identity comes before everything else in Phase II</h2>
 
@@ -525,6 +558,14 @@
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Identify the biggest gap</div><div class="task-desc">Honestly assess: where is the largest gap between your identity statement and your actual behavior over the past 7 days? Name it specifically. This is your primary growth edge for Phase II — the area where identity and behavior are most misaligned.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Create a daily identity practice</div><div class="task-desc">Place your identity statement next to your non-negotiable list. Read both every morning during your morning sequence. This takes 30 seconds and anchors your self-concept before the day begins. Over time, the words become automatic — and so does the behavior they describe.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Review your tracker data through the identity lens</div><div class="task-desc">Look at your logged days from Phase I. Every completed non-negotiable was a vote for your new identity. Count the votes. You've already started becoming this person — the data proves it.</div></div></div>
+  <div class="task fade f7">
+    <div class="check"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Add your identity statement to the app</div>
+      <div class="task-desc">Open <strong>Goals</strong> in the tracker and add your identity statement as a new goal. Now both your direction and your identity are visible every time you open the app — a daily reminder of where you're going and who you're being.</div>
+    </div>
+  </div>
+
   <div class="closing phase-2-style fade f8">
     <p>You now have direction, structure, and an identity to operate from. This changes the nature of discipline entirely. It's no longer about forcing yourself to do things you don't want to do. It's about being consistent with who you've decided to be.</p>
     <p>When resistance shows up — and it will — you now have a question to ask that's more powerful than "should I do this?": <strong>Is this what the person I've decided to be would do?</strong> That question cuts through every excuse, every rationalization, every moment of weakness. Not because it's motivating — because it's clarifying.</p>

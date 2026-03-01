@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 15</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Build Your<br>Accountability Layer</h1><p class="hero-intro">Your system works when conditions are good and motivation is high. The real question is: what keeps it running when they're not? Today you build the accountability structure that makes quitting harder than continuing.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Responsibility</div><p>You are fully responsible for everything you are, everything you have, and everything you become. No one is coming to rescue you. No external force will make your system work for you. This is the most confronting — and most empowering — truth in the psychology of achievement.</p>
 <p>Accountability is the structural expression of responsibility. It's the mechanism that ensures you follow through on what you've committed to — <strong>not through guilt, but through design</strong>.</p>
-<p>When the system is designed so that following through is easier than quitting, discipline becomes almost effortless. That's the goal today.</p></div>
+<p>When the system is designed so that following through is easier than quitting, discipline becomes almost effortless. That's the goal today.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Track Your Streaks</div>
+        <div class="app-card-desc">Your <strong>streaks</strong> are your accountability made visible. Check them daily — they're harder to break than to maintain.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">Why willpower always has an expiration date</h2>
 <p class="prose">If your system relies on willpower to run, it will eventually fail. This isn't pessimism — it's physiology. Willpower is a depletable resource. It's highest in the morning and lowest in the evening. It weakens under stress, fatigue, illness, and emotional turbulence. It erodes gradually over days and weeks of sustained demand.</p>
@@ -472,7 +505,7 @@
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Choose at least 2 accountability layers</div><div class="task-desc">Self-accountability through the tracker is already in place. Add at least one external layer. Social (tell someone and set up weekly check-ins), public (make a visible commitment), or consequence-based (define real stakes). Choose what fits your personality and situation.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Set up your external accountability today</div><div class="task-desc">If social: message or call that person today. Tell them what you're doing and ask if they'll check in with you weekly. If public: write and post your commitment. If consequence-based: define the specific consequence and write it down. Don't delay — the setup itself is the first act of accountability.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Design your failure protocol</div><div class="task-desc">Write a specific rule: 'If I miss a day, I [exact recovery action] the next morning.' Make it concrete, immediate, and non-negotiable. The key rule: never miss twice in a row.</div></div></div>
-<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Review your tracker streak</div><div class="task-desc">Look at your consistency since Day 5. Where did you hold perfectly? Where did you break? If you had a failure protocol in place, would any of those breaks have been shorter? Use this data to inform which accountability layers you need most.</div></div></div>
+<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Review your tracker streak</div><div class="task-desc">Open the Dashboard and look at your <strong>streaks</strong>. How many consecutive days of completed Tasks? How about Habits? Streaks are accountability made visible — each day you maintain one, the cost of breaking it grows. Use this data to inform which additional accountability layers you need.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Activate today</div><div class="task-desc">Whatever accountability layers you chose, activate them now. Not tomorrow. Not after you've 'prepared.' The activation itself is the commitment. Telling your accountability partner today is more powerful than planning to tell them next week.</div></div></div>
 <div class="closing phase-3-style fade f8"><p>Your system now has structural support beyond your own willpower. On strong days, you won't need it. On weak days — the days that determine whether a system survives or dies — the accountability layer holds you in place when motivation can't.</p>
 <p>Tomorrow, you prepare for the absolute worst — the days when nothing goes right, your schedule implodes, and your energy is depleted. You'll design a minimum viable day that keeps the system alive no matter what life throws at you.</p>

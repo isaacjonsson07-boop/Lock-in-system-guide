@@ -423,6 +423,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head>
 <body>
@@ -467,6 +491,15 @@
     <p>Success is not a straight line. It's a continuous process of action, feedback, and correction. The people who achieve the most are not the ones who execute perfectly — they're the ones who review honestly, adjust quickly, and keep moving.</p>
     <p>Without feedback, even the best system drifts off course. A ship crossing the ocean is off course more than 90% of the time — it arrives at its destination not through perfect navigation, but through <strong>continuous small corrections based on real-time data</strong>.</p>
     <p>Your review today is that correction. The data doesn't judge you. It informs you.</p>
+  
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Review Your Dashboard</div>
+        <div class="app-card-desc">Open the <strong>Dashboard</strong> to see your first week of data. Check your Task completion rates and streaks.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
   </div>
   <main class="fade f4">
     <h2 class="section-title">Why this review matters more than any lesson</h2>
@@ -520,7 +553,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Run a full 6-day review</div>
-      <div class="task-desc">Open your tracker and review each day from Day 1 through today. For each component — direction, structure, non-negotiables, defaults, environment — rate your consistency: strong (held most days), partial (held some days), or missed (didn't hold).</div>
+      <div class="task-desc">Open the app <strong>Dashboard</strong> and review your data from the past week. Look at your Task completion rates and streaks. For each component — direction, structure, non-negotiables, defaults, environment — rate your consistency: strong, partial, or missed. The Dashboard shows you facts, not feelings.</div>
       
     </div>
   </div>
@@ -547,7 +580,7 @@
     <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Write your Week 1 status report</div>
-      <div class="task-desc">3–5 sentences summarizing your first week. Where are you compared to Day 1? What's your non-negotiable completion rate? What feels different? What's your one adjustment for Week 2? This goes into your installation record.</div>
+      <div class="task-desc">Go to <strong>Journal</strong> in the app. Write 3-5 sentences summarizing your first week. Reference your Dashboard data — what's your actual Task completion rate? What's your streak count? What's your one adjustment for Week 2? This becomes part of your permanent installation record.</div>
       
     </div>
   </div>

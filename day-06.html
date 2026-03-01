@@ -423,6 +423,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style>
 </head>
 <body>
@@ -467,6 +491,15 @@
     <p>Your outer world is a mirror of your inner world. The conditions surrounding you — your workspace, your phone, your relationships — reflect and reinforce the patterns inside you.</p>
     <p>But this law works in both directions. Change what surrounds you, and you change what happens within you. A person who sits at a clean desk with their phone in another room behaves differently than the same person at a cluttered desk with notifications buzzing every three minutes.</p>
     <p><strong>Environment design is the highest-leverage change you can make</strong> — because it works automatically, every day, without requiring willpower or conscious effort.</p>
+  
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Log in the Tracker</div>
+        <div class="app-card-desc">Complete your <strong>Tasks</strong> and write a <strong>Journal</strong> entry about your environment audit.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
   </div>
   <main class="fade f4">
     <h2 class="section-title">The invisible force</h2>
@@ -556,6 +589,14 @@
       
     </div>
   </div>
+  <div class="task fade f7">
+    <div class="check"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Write your first Journal entry</div>
+      <div class="task-desc">Open the app and go to <strong>Journal</strong>. Write 2-3 sentences about today's environment audit — what you changed in your physical, digital, and social spaces. This is the beginning of your installation record.</div>
+    </div>
+  </div>
+
   <div class="closing  fade f8">
     <p>You've spent six days building from the inside out — direction, structure, awareness, discipline, tracking. Today you shaped the outside to match. The environment now supports the system instead of fighting it.</p>
     <p>This is the Law of Correspondence in action: your outer world is beginning to reflect the inner system you've been building. A clean workspace, a controlled phone, conscious social choices — these aren't just nice-to-haves. They're structural reinforcements that make every other component work better.</p>

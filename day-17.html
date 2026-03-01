@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 17</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Master Your<br>Internal Dialogue</h1><p class="hero-intro">Your system is built, tracked, stress-proofed, and accountable. But there's one variable that can override all of it — the voice inside your head. The stories you tell yourself about who you are, what's possible, and whether this is working. Today you learn to manage that voice.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Subconscious Activity</div><p>Your subconscious mind makes your words and actions fit a pattern consistent with your self-concept and your deepest beliefs about yourself. It operates continuously, below the level of awareness, shaping your behavior to match the story you're telling yourself.</p>
 <p>If your internal narrative says "I always give up," your subconscious will find reasons and create conditions that make giving up seem reasonable. If your narrative says "I follow through no matter what," your subconscious will generate energy, creativity, and persistence to make that true.</p>
-<p><strong>The voice isn't just commentary. It's a command system.</strong> Whatever script it runs, your behavior follows.</p></div>
+<p><strong>The voice isn't just commentary. It's a command system.</strong> Whatever script it runs, your behavior follows.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Journal Your Scripts</div>
+        <div class="app-card-desc">Write your sabotage scripts and replacements in the <strong>Journal</strong> — seeing them side by side is the antidote.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">The narrator runs the show</h2>
 <p class="prose">There's a voice in your head that narrates everything you do. It runs commentary on your performance, your potential, your past, and your future. It tells you whether you can or can't. Whether this is working or pointless. Whether you deserve what you're building or whether you'll fail like you "always" do.</p>
@@ -483,7 +516,7 @@
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write a replacement for each one</div><div class="task-desc">For each sabotage script, write an operational response — short, direct, and grounded in evidence from the past 17 days. The replacement should be something you genuinely believe based on what you've done, not a platitude.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Create your personal mantra</div><div class="task-desc">One sentence that captures your operating identity and cuts through resistance. Short enough to say in 3 seconds. Powerful enough to redirect your focus. Test it: does it feel true? Would the person in your identity statement say this?</div><span class="task-hint">"I execute, then I feel. Not the other way around."</span></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Practice the replacement today</div><div class="task-desc">For the rest of today, notice when a sabotage script runs. Catch it. Name it. Consciously replace it with your new response. This is a skill — it gets easier with practice, but it requires intentional repetition at first.</div></div></div>
-<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write your scripts where you'll see them</div><div class="task-desc">Put your top 3 sabotage scripts and their replacements somewhere visible — next to your identity statement, in your phone notes, on your desk. When you can see the old script and the new one side by side, the choice becomes obvious.</div></div></div>
+<div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write your scripts where you'll see them</div><div class="task-desc">Open <strong>Journal</strong> and write a dedicated entry titled "Script Replacements." List each sabotage script on the left and its operational replacement on the right. Also add your personal mantra. When resistance hits, open this entry — seeing the old script next to the replacement makes the choice obvious.</div></div></div>
 <div class="closing phase-3-style fade f8"><p>You've just addressed the most personal — and often the most powerful — component of the entire system. The external architecture is solid. Now the internal dialogue matches it.</p>
 <p>The sabotage scripts don't disappear overnight. They'll surface again — during stress, during doubt, during the moments that test your commitment. But now you have a response for each one. And every time you choose the replacement over the script, the old pattern weakens and the new one strengthens.</p>
 <p>Tomorrow, you build the mechanism that keeps everything running permanently — your weekly review cycle. This is where 21 days of installation becomes a lifelong operating rhythm.</p>

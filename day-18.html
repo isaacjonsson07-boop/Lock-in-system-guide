@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 18</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Design Your<br>Weekly Review</h1><p class="hero-intro">The installation ends on Day 21. What keeps the system alive after that is the review cycle. Today you build the single most important retention mechanism in the entire program — the habit that protects all the other habits.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Feedback</div><p>Continuous improvement requires continuous feedback. Without a regular mechanism to assess what's working and what isn't, even the best system gradually drifts off course — not because it failed, but because it stopped being actively maintained.</p>
 <p>The weekly review is that mechanism. It's not optional. It's not a nice-to-have. It is <strong>the heartbeat of your operating system</strong> — the single practice that keeps everything else calibrated, relevant, and alive.</p>
-<p>Every successful operating system — from personal to corporate — has a feedback loop. Without it, performance degrades. With it, performance compounds.</p></div>
+<p>Every successful operating system — from personal to corporate — has a feedback loop. Without it, performance degrades. With it, performance compounds.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Set Up Your Review</div>
+        <div class="app-card-desc">Add your weekly review as a recurring <strong>Task</strong> so it shows up every week automatically.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">Why most systems die after the program ends</h2>
 <p class="prose">Here's the pattern: someone completes a course, a challenge, or a program. For a few weeks, they're energized. They follow the system. Results come. Then, gradually, they stop paying attention. They skip a day. Then a week. The habits erode. The tracker goes unused. Within two months, they're back where they started — or close to it.</p>
@@ -477,6 +510,14 @@
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Run a practice review right now</div><div class="task-desc">Use today as a trial run. Go through all 5 sections using your data from the past week. Time yourself. Adjust the format until it feels natural and fast. The practice run reveals whether the template works before you rely on it.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Set a recurring calendar reminder</div><div class="task-desc">Put the weekly review in your calendar as a recurring event. Set a notification 15 minutes before. The review must be triggered externally until it becomes habitual — don't rely on memory.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Write the rule</div><div class="task-desc">'Every [day] at [time], I run my 10-minute weekly review. Non-negotiable.' Add this to your system overview alongside your other non-negotiables. This is the habit that maintains all the other habits.</div></div></div>
+  <div class="task fade f7">
+    <div class="check"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Add weekly review as a recurring task</div>
+      <div class="task-desc">Open <strong>Tasks</strong> in the app and add "Weekly Review" as a recurring task on your chosen day. Include a note with the 10-minute template: data review, direction check, priority check, one adjustment, next week's intention. The app now triggers and tracks your reviews.</div>
+    </div>
+  </div>
+
 <div class="closing phase-3-style fade f8"><p>You've just built the single most important retention mechanism in the entire program. The weekly review is what transforms 21 days of installation into a permanent operating system. Without it, the system has an expiration date. With it, the system has a heartbeat.</p>
 <p>Tomorrow, you build the longer-cycle version — the monthly recalibration that keeps your direction and priorities evolving as you grow. The weekly review keeps you calibrated week to week. The monthly recalibration keeps you aligned month to month.</p>
 <p><strong>Your first real weekly review happens at the end of this week. You're ready for it. The template is built. The time is set. The system sustains itself.</strong></p></div><a href="day-19.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 19</div><div class="next-title">Plan your monthly recalibration</div></div><span class="next-arrow">→</span></a>

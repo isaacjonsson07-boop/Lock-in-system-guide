@@ -414,6 +414,30 @@
     .f4 { animation-delay: 0.2s; } .f5 { animation-delay: 0.28s; } .f6 { animation-delay: 0.36s; }
     .f7 { animation-delay: 0.42s; } .f8 { animation-delay: 0.5s; } .f9 { animation-delay: 0.58s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  
+    /* === APP CALLOUT === */
+    .app-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.15s ease;
+      cursor: pointer;
+    }
+    .app-card:hover { border-color: var(--gold); background: var(--bg-lift); }
+    .app-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .app-card-text { flex: 1; }
+    .app-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .app-card-desc { font-size: 0.88rem; font-weight: 400; color: var(--cream-soft); line-height: 1.5; }
+    .app-card-desc strong { color: var(--cream); }
+    .app-card-arrow { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s ease; }
+    .app-card:hover .app-card-arrow { transform: translateX(4px); }
   </style></head><body><div class="page">
 <nav class="nav fade f1"><span class="nav-brand">Structured Achievement</span><span class="nav-day"><strong>Day 19</strong> of 21</span></nav>
   <div class="progress-nav fade f1">
@@ -444,7 +468,16 @@
 <div class="hero fade f2"><div class="hero-phase phase-3-color">Phase III — Install</div><h1 class="hero-title">Plan Your Monthly<br>Recalibration</h1><p class="hero-intro">Weekly reviews keep you calibrated week to week. Monthly recalibrations keep your system alive month to month — ensuring your direction, identity, and priorities evolve as you grow instead of becoming stale artifacts you outgrow and abandon.</p></div>
 <div class="principle phase-3-border fade f3"><div class="principle-label phase-3-color">The Law of Goal Setting</div><p>Goals are the fuel in the furnace of achievement. Without them, there's nothing to drive toward. But goals that never evolve become prisons instead of fuel — fixed targets in a changing life.</p>
 <p>The most successful people don't just set goals — they revisit, refine, and sometimes completely replace them as their understanding deepens and their circumstances change.</p>
-<p><strong>A system that can't adapt is a system with an expiration date.</strong> The monthly recalibration ensures your system remains a living, evolving tool — not a relic of who you were a month ago.</p></div>
+<p><strong>A system that can't adapt is a system with an expiration date.</strong> The monthly recalibration ensures your system remains a living, evolving tool — not a relic of who you were a month ago.</p>
+    <a href="https://daily-achievement-tracker.netlify.app/" target="_blank" class="app-card fade f4">
+      <span class="app-card-icon">◆</span>
+      <div class="app-card-text">
+        <div class="app-card-label">Set Up Recalibration</div>
+        <div class="app-card-desc">Add your monthly recalibration as a recurring <strong>Task</strong> in the tracker.</div>
+      </div>
+      <span class="app-card-arrow">→</span>
+    </a>
+  </div>
 <main class="fade f4">
 <h2 class="section-title">Why monthly matters</h2>
 <p class="prose">Your weekly review handles tactical maintenance — did I do what I said I'd do? Are my habits holding? Where do I need to adjust? It operates at the level of daily execution.</p>
@@ -477,6 +510,14 @@
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Run a practice recalibration now</div><div class="task-desc">Treat the past 19 days as your first month. Walk through all 5 steps with real data. Update your direction and identity if they've evolved. Reassess your priorities. Set a focus for the final 2 days and beyond.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Document your evolution since Day 1</div><div class="task-desc">Write a brief paragraph about how your thinking has changed. What do you understand about yourself now that you didn't on Day 1? What priorities have shifted? What surprised you? This becomes part of your permanent installation record.</div></div></div>
 <div class="task fade f7"><div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div><div class="task-content"><div class="task-name">Confirm your complete operating rhythm</div><div class="task-desc">Write out your three cycles in one place: daily (execute + log), weekly (10-min review), monthly (30-min recalibration). This is the engine that runs your system indefinitely. Make sure all three have calendar entries.</div></div></div>
+  <div class="task fade f7">
+    <div class="check"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="task-content">
+      <div class="task-name">Add monthly recalibration to the app</div>
+      <div class="task-desc">Open <strong>Tasks</strong> and add "Monthly Recalibration" as a task on your chosen date. Include a note with the 5-step template. Your app now contains triggers for both maintenance cycles — weekly and monthly. The system maintains itself.</div>
+    </div>
+  </div>
+
 <div class="closing phase-3-style fade f8"><p>You now have every maintenance mechanism in place. Daily execution keeps the system moving. Weekly reviews keep it calibrated. Monthly recalibrations keep it evolving. Three nested cycles, each serving a different time horizon, together creating a self-sustaining operating rhythm.</p>
 <p>Tomorrow, you pull everything together. Every component, every principle, every tool — consolidated into a single operating manual that you'll reference for as long as you run the system.</p>
 <p><strong>The system doesn't need you to be motivated. It needs you to show up for maintenance. Ten minutes a week. Thirty minutes a month. That's the cost of permanent operation.</strong></p></div><a href="day-20.html" class="next fade f9"><div><div class="next-eyebrow">Tomorrow — Day 20</div><div class="next-title">Consolidate your operating system</div></div><span class="next-arrow">→</span></a>
