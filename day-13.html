@@ -516,7 +516,7 @@
   </div>
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Identify your top 5 recurring decisions</div>
       <div class="task-desc">What choices do you face repeatedly — daily or weekly — that consume energy through deliberation? List them. These might include: what to eat, when to exercise, whether to check your phone, how to respond to requests, what to work on first.</div>
@@ -525,7 +525,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Create a rule for each one</div>
       <div class="task-desc">For each recurring decision, write a clear rule that eliminates the deliberation. Keep it simple and absolute. The less ambiguity, the more automatic it becomes.</div>
@@ -534,7 +534,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Write 3-5 if-then rules for your weak points</div>
       <div class="task-desc">Revisit your Day 3 defaults. For each pattern that still shows up, create an if-then rule: 'If [trigger], then [response].' Focus on the situations where you're most likely to fall back into old patterns.</div>
@@ -543,7 +543,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Test one rule today</div>
       <div class="task-desc">Choose the rule that addresses your most frequent recurring decision. Apply it today. Notice how it feels to not deliberate — to simply execute the rule. The initial discomfort is normal. The energy savings are immediate.</div>
@@ -552,7 +552,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Add your rules to your system overview</div>
       <div class="task-desc">Decision rules are now part of your operating manual. Add them to the one-page overview from Day 12. They sit alongside your structure, non-negotiables, and habits as part of your daily operating infrastructure.</div>
@@ -570,5 +570,33 @@
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
 </div>
+
+  <script>
+    (function() {
+      var day = 13;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

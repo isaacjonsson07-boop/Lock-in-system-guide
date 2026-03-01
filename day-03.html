@@ -551,7 +551,7 @@
 
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')">
+    <div class="check" >
       <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
     </div>
     <div class="task-content">
@@ -562,7 +562,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')">
+    <div class="check" >
       <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
     </div>
     <div class="task-content">
@@ -573,7 +573,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')">
+    <div class="check" >
       <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
     </div>
     <div class="task-content">
@@ -584,7 +584,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')">
+    <div class="check" >
       <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
     </div>
     <div class="task-content">
@@ -595,7 +595,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')">
+    <div class="check" >
       <svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg>
     </div>
     <div class="task-content">
@@ -631,5 +631,33 @@
 
 </div>
 
+
+  <script>
+    (function() {
+      var day = 3;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

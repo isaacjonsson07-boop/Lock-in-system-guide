@@ -527,7 +527,7 @@
   </div>
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Choose 3 to 5 non-negotiable daily actions</div>
       <div class="task-desc">These are the behaviors you commit to doing every single day for the remaining 17 days. Each one must be simple, binary, within your control, and connected to your direction. Write them down.</div>
@@ -536,7 +536,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Stress-test against your worst day</div>
       <div class="task-desc">Imagine your busiest, most exhausting, most disrupted day. Walk through your non-negotiables mentally. Could you still complete every one? If any would fail under pressure, simplify it further. The floor must hold on the worst day.</div>
@@ -545,7 +545,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Connect each non-negotiable to a Day 3 default</div>
       <div class="task-desc">For each non-negotiable, identify which destructive default it directly counters. If a non-negotiable doesn't counter any of your identified defaults, question whether it belongs on the list.</div>
@@ -554,7 +554,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Place your non-negotiable list where you'll see it daily</div>
       <div class="task-desc">Phone lock screen, sticky note on your mirror, first page of your notebook, taped to your desk. This list should be impossible to forget. Visibility creates accountability.</div>
@@ -563,7 +563,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Commit out loud</div>
       <div class="task-desc">Say your non-negotiables out loud — to yourself, to someone you trust, or record a voice memo. Verbalizing a commitment activates a different level of psychological buy-in than just writing it down. This sounds simple. It matters more than you'd expect.</div>
@@ -585,5 +585,33 @@
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
 </div>
+
+  <script>
+    (function() {
+      var day = 4;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

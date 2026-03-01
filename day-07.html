@@ -517,7 +517,7 @@
   </div>
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Run a full 6-day review</div>
       <div class="task-desc">Open your tracker and review each day from Day 1 through today. For each component — direction, structure, non-negotiables, defaults, environment — rate your consistency: strong (held most days), partial (held some days), or missed (didn't hold).</div>
@@ -526,7 +526,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Identify your #1 strength and #1 weakness</div>
       <div class="task-desc">What component held up best this week? What fell apart most? Be specific — not 'discipline' but 'I followed my morning sequence 5 out of 6 days' or 'I skipped my evening close-out 4 times because I stayed up too late.'</div>
@@ -535,7 +535,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Make one specific adjustment</div>
       <div class="task-desc">Based on your review, identify one change that would have the biggest positive impact on next week. Write it down clearly: what you're changing, why, and how it works starting tomorrow.</div>
@@ -544,7 +544,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Write your Week 1 status report</div>
       <div class="task-desc">3–5 sentences summarizing your first week. Where are you compared to Day 1? What's your non-negotiable completion rate? What feels different? What's your one adjustment for Week 2? This goes into your installation record.</div>
@@ -553,7 +553,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Acknowledge the foundation you've built</div>
       <div class="task-desc">In six days, you've installed a direction, daily structure, pattern awareness, behavioral anchors, a tracking system, and an optimized environment. That's a complete operating foundation. Review your tracker — the data is proof of what you've built.</div>
@@ -576,5 +576,33 @@
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
 </div>
+
+  <script>
+    (function() {
+      var day = 7;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

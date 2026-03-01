@@ -520,7 +520,7 @@
   </div>
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Review your full tracker data</div>
       <div class="task-desc">Look at every logged day from Day 5 through today. Calculate your non-negotiable completion rate as a percentage. Note patterns in consistency — which days are strong, which are weak, and why.</div>
@@ -529,7 +529,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Reassess your direction and identity statements</div>
       <div class="task-desc">Read both out loud. Update either one based on what you've learned over 14 days. The direction can sharpen. The identity can become more grounded. Both should feel truer now than they did when you wrote them.</div>
@@ -538,7 +538,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Do a full system audit</div>
       <div class="task-desc">List every active component: structure, non-negotiables, habits, decision rules, priorities. For each one, mark: keep as-is, adjust (and how), or remove. Then make the changes.</div>
@@ -547,7 +547,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Identify your 2-3 targeted adjustments</div>
       <div class="task-desc">Based on the audit, what are the 2-3 changes that would produce the biggest improvement going into Phase III? Write them down clearly with specific implementation plans.</div>
@@ -556,7 +556,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Write your midpoint status report</div>
       <div class="task-desc">3-5 sentences. Where are you compared to Day 1? What's your biggest strength? What needs the most work? What are you carrying into Phase III? This goes into your installation record alongside your Day 7 report.</div>
@@ -575,5 +575,33 @@
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
 </div>
+
+  <script>
+    (function() {
+      var day = 14;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

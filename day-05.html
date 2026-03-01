@@ -519,7 +519,7 @@
   </div>
   
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Set up your tracker</div>
       <div class="task-desc">Open the Structured Achievement app and configure your profile. Enter your direction statement, your non-negotiables, and your daily indicators. Take 5 minutes to familiarize yourself with how logging works.</div>
@@ -528,7 +528,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Log today as your first tracked day</div>
       <div class="task-desc">Complete your non-negotiables today. During your evening close-out, open the tracker. Check off what you did. Write a one-sentence daily note. This is your first data point — Day 1 of your tracked record.</div>
@@ -537,7 +537,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Set a daily reminder for logging</div>
       <div class="task-desc">Put a recurring alarm or calendar event 5 minutes before your evening close-out time. The reminder ensures logging doesn't get skipped. Don't rely on memory — automate the trigger.</div>
@@ -546,7 +546,7 @@
   </div>
 
   <div class="task fade f7">
-    <div class="check" onclick="this.classList.toggle('done')"><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
+    <div class="check" ><svg viewBox="0 0 14 14" fill="none" stroke="#1E1F23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7.5 5.5 10.5 11.5 4"/></svg></div>
     <div class="task-content">
       <div class="task-name">Commit to logging every day through Day 21</div>
       <div class="task-desc">The tracker only produces value with consistent use. One logged day is a data point. Sixteen consecutive logged days is a dataset. Make the commitment explicit: every day, during close-out, 2 minutes, no exceptions.</div>
@@ -569,5 +569,33 @@
     <span class="foot-phase"><span class="foot-dot off"></span>Install</span>
   </div>
 </div>
+
+  <script>
+    (function() {
+      var day = 5;
+      var checks = document.querySelectorAll('.check');
+      
+      // Load saved state
+      checks.forEach(function(check, i) {
+        var key = 'sa-day' + day + '-task' + i;
+        if (localStorage.getItem(key) === 'done') {
+          check.classList.add('done');
+        }
+      });
+
+      // Save on click
+      checks.forEach(function(check, i) {
+        check.addEventListener('click', function() {
+          this.classList.toggle('done');
+          var key = 'sa-day' + day + '-task' + i;
+          if (this.classList.contains('done')) {
+            localStorage.setItem(key, 'done');
+          } else {
+            localStorage.removeItem(key);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
