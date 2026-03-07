@@ -656,7 +656,7 @@
         </div>
         <div class="screenshot-side">
           <div class="screenshot" onclick="openLightbox(this)">
-            <img src="images/guide-1-today.png" alt="Today tab showing non-negotiables, keystone habits, and daily tasks">
+            <img src="images/thumbs/guide-1-today.png" data-full="images/guide-1-today.png" alt="Today tab showing non-negotiables, keystone habits, and daily tasks">
           </div>
           <p class="screenshot-caption">The Today tab — direction, non-negotiables, and habits.</p>
         </div>
@@ -714,11 +714,11 @@
         </div>
         <div class="screenshot-side">
           <div class="screenshot" onclick="openLightbox(this)">
-            <img src="images/guide-2-grid.png" alt="Installation tab showing the 21-day grid with phase colors">
+            <img src="images/thumbs/guide-2-grid.png" data-full="images/guide-2-grid.png" alt="Installation tab showing the 21-day grid with phase colors">
           </div>
           <p class="screenshot-caption">The 21-day grid — three phases, progress tracking, and stats.</p>
           <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
-            <img src="images/guide-3-lesson.png" alt="Day 1 lesson showing the Law of Cause and Effect">
+            <img src="images/thumbs/guide-3-lesson.png" data-full="images/guide-3-lesson.png" alt="Day 1 lesson showing the Law of Cause and Effect">
           </div>
           <p class="screenshot-caption">Day 1's lesson — principle, content, and configuration tasks.</p>
         </div>
@@ -787,11 +787,11 @@
         </div>
         <div class="screenshot-side">
           <div class="screenshot" onclick="openLightbox(this)">
-            <img src="images/guide-4-snapshot.png" alt="Reviews snapshot showing system health at 90%">
+            <img src="images/thumbs/guide-4-snapshot.png" data-full="images/guide-4-snapshot.png" alt="Reviews snapshot showing system health at 90%">
           </div>
           <p class="screenshot-caption">The Snapshot — 7-day system health and category rates.</p>
           <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
-            <img src="images/guide-5-recal.png" alt="Quarterly recalibration showing habit audit with Keep and Rotate buttons">
+            <img src="images/thumbs/guide-5-recal.png" data-full="images/guide-5-recal.png" alt="Quarterly recalibration showing habit audit with Keep and Rotate buttons">
           </div>
           <p class="screenshot-caption">Habit Audit — keep what works, rotate what's stale.</p>
         </div>
@@ -850,11 +850,11 @@
         </div>
         <div class="screenshot-side">
           <div class="screenshot" onclick="openLightbox(this)">
-            <img src="images/guide-6a-achievements.png" alt="Achievements tab showing monthly reports with Gold and Bronze tiers">
+            <img src="images/thumbs/guide-6a-achievements.png" data-full="images/guide-6a-achievements.png" alt="Achievements tab showing monthly reports with Gold and Bronze tiers">
           </div>
           <p class="screenshot-caption">Monthly report history — scores, tiers, and progress.</p>
           <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
-            <img src="images/guide-6b-report.png" alt="Expanded System Report showing Gold tier with 89 score">
+            <img src="images/thumbs/guide-6b-report.png" data-full="images/guide-6b-report.png" alt="Expanded System Report showing Gold tier with 89 score">
           </div>
           <p class="screenshot-caption">Expanded report — breakdown, stats, and personal highlight.</p>
         </div>
@@ -926,7 +926,7 @@
       </div>
 
       <div class="screenshot" onclick="openLightbox(this)">
-        <img src="images/guide-7-system.png" alt="System tab showing documents, non-negotiables, and habits sections">
+        <img src="images/thumbs/guide-7-system.png" data-full="images/guide-7-system.png" alt="System tab showing documents, non-negotiables, and habits sections">
       </div>
       <p class="screenshot-caption">The System tab — your documents, non-negotiables, and habits in one configuration panel.</p>
     </section>
@@ -1008,7 +1008,7 @@
     function openLightbox(el) {
       const img = el.querySelector('img');
       if (!img) return;
-      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').src = img.dataset.full || img.src;
       document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
