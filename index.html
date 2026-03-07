@@ -66,13 +66,13 @@
       z-index: 0;
     }
 
-    /* Grain */
+    /* Grain — subtle, not pixelated */
     body::after {
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.05;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
     }
@@ -80,9 +80,9 @@
     .guide-container {
       position: relative;
       z-index: 1;
-      max-width: 720px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
+      padding: 3rem 2.5rem 5rem;
     }
 
     /* ── Header ── */
@@ -269,17 +269,23 @@
       background: var(--bg-warm);
       border: 1px solid var(--border-light);
       border-radius: 8px;
-      padding: 2rem;
+      padding: 0.75rem;
       margin: 1.5rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .screenshot:hover {
+      border-color: var(--gold-border);
     }
 
     .screenshot img {
       width: 100%;
       max-width: 100%;
-      border-radius: 6px;
+      border-radius: 4px;
       display: block;
     }
 
@@ -296,6 +302,59 @@
       text-align: center;
       margin-top: 0.75rem;
       font-style: italic;
+    }
+
+    /* ── Side-by-side layout ── */
+
+    .content-with-screenshot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 1.5rem;
+    }
+
+    .content-with-screenshot .content-side {
+      min-width: 0;
+    }
+
+    .content-with-screenshot .screenshot-side .screenshot {
+      margin: 0;
+    }
+
+    /* ── Lightbox ── */
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-hint {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
     }
 
     /* ── Step lists ── */
@@ -439,7 +498,7 @@
 
     /* ── Responsive ── */
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .guide-container {
         padding: 2rem 1.25rem 4rem;
       }
@@ -454,6 +513,11 @@
 
       .toc {
         padding: 1.25rem 1.5rem;
+      }
+
+      .content-with-screenshot {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
     }
   </style>
@@ -554,44 +618,49 @@
         and daily tasks.
       </p>
 
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-dot gold"></div>
-          <div>
-            <div class="title">Non-Negotiables</div>
-            <div class="desc">
-              Your core daily commitments — the things you do regardless of how you feel.
-              These show up every day. Tap to check them off. If you see a zero, the day is incomplete.
+      <div class="content-with-screenshot">
+        <div class="content-side">
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-dot gold"></div>
+              <div>
+                <div class="title">Non-Negotiables</div>
+                <div class="desc">
+                  Your core daily commitments — the things you do regardless of how you feel.
+                  These show up every day. Tap to check them off. If you see a zero, the day is incomplete.
+                </div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot blue"></div>
+              <div>
+                <div class="title">Keystone Habits</div>
+                <div class="desc">
+                  Recurring behaviors tied to specific days of the week. They only appear on the days
+                  you configured them for. Tap to complete.
+                </div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot green"></div>
+              <div>
+                <div class="title">Daily Tasks</div>
+                <div class="desc">
+                  One-off tasks for today. Add them the night before or in the morning. Tap to complete,
+                  swipe or delete when done. These are your tactical execution items — what specifically
+                  needs to happen today.
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-dot blue"></div>
-          <div>
-            <div class="title">Keystone Habits</div>
-            <div class="desc">
-              Recurring behaviors tied to specific days of the week. They only appear on the days
-              you configured them for. Tap to complete.
-            </div>
+        <div class="screenshot-side">
+          <div class="screenshot" onclick="openLightbox(this)">
+            <img src="images/guide-1-today.png" alt="Today tab showing non-negotiables, keystone habits, and daily tasks">
           </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-dot green"></div>
-          <div>
-            <div class="title">Daily Tasks</div>
-            <div class="desc">
-              One-off tasks for today. Add them the night before or in the morning. Tap to complete,
-              swipe or delete when done. These are your tactical execution items — what specifically
-              needs to happen today.
-            </div>
-          </div>
+          <p class="screenshot-caption">The Today tab — direction, non-negotiables, and habits.</p>
         </div>
       </div>
-
-      <div class="screenshot">
-        <img src="images/guide-1-today.png" alt="Today tab showing non-negotiables, keystone habits, and daily tasks">
-      </div>
-      <p class="screenshot-caption">The Today tab — your daily execution surface with direction statement, non-negotiables, and habits.</p>
 
       <div class="callout">
         <p class="callout-title">How to use it</p>
@@ -610,48 +679,50 @@
     <section id="installation" class="guide-section">
       <p class="section-label">Section 3</p>
       <h2>Installation — The 21-Day Corridor</h2>
-      <p>
-        The Installation tab contains all 21 days of the course. Each day appears as a numbered card
-        in a grid, organized by phase: Stabilize (Days 1–7), Reconstruct (Days 8–14), and Install
-        (Days 15–21). Days 7, 14, and 21 are review days marked with a dashed border.
-      </p>
-
-      <div class="screenshot">
-        <img src="images/guide-2-grid.png" alt="Installation tab showing the 21-day grid with phase colors">
-      </div>
-      <p class="screenshot-caption">The Installation tab — 21 days across three phases, with progress tracking and stats.</p>
-
-      <p>
-        Click any day to open it. Each day has two tabs:
-      </p>
-
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-dot gold"></div>
-          <div>
-            <div class="title">Lesson</div>
-            <div class="desc">
-              The day's content — a principle, deep explanation, and configuration tasks. Read it fully.
-              The configuration tasks at the end are not optional — they are what installs the system component.
+      <div class="content-with-screenshot">
+        <div class="content-side">
+          <p>
+            The Installation tab contains all 21 days of the course. Each day appears as a numbered card
+            in a grid, organized by phase: Stabilize (Days 1–7), Reconstruct (Days 8–14), and Install
+            (Days 15–21). Days 7, 14, and 21 are review days marked with a dashed border.
+          </p>
+          <p>
+            Click any day to open it. Each day has two tabs:
+          </p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-dot gold"></div>
+              <div>
+                <div class="title">Lesson</div>
+                <div class="desc">
+                  The day's content — a principle, deep explanation, and configuration tasks. Read it fully.
+                  The configuration tasks at the end are not optional — they are what installs the system component.
+                </div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot gold"></div>
+              <div>
+                <div class="title">Journal</div>
+                <div class="desc">
+                  Structured prompts specific to that day. Your answers here are how you internalize and apply
+                  the lesson to your life. Complete the journal before moving to the next day.
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-dot gold"></div>
-          <div>
-            <div class="title">Journal</div>
-            <div class="desc">
-              Structured prompts specific to that day. Your answers here are how you internalize and apply
-              the lesson to your life. Complete the journal before moving to the next day.
-            </div>
+        <div class="screenshot-side">
+          <div class="screenshot" onclick="openLightbox(this)">
+            <img src="images/guide-2-grid.png" alt="Installation tab showing the 21-day grid with phase colors">
           </div>
+          <p class="screenshot-caption">The 21-day grid — three phases, progress tracking, and stats.</p>
+          <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
+            <img src="images/guide-3-lesson.png" alt="Day 1 lesson showing the Law of Cause and Effect">
+          </div>
+          <p class="screenshot-caption">Day 1's lesson — principle, content, and configuration tasks.</p>
         </div>
       </div>
-
-      <div class="screenshot">
-        <img src="images/guide-3-lesson.png" alt="Day 1 lesson showing the Law of Cause and Effect">
-      </div>
-      <p class="screenshot-caption">A lesson view — Day 1's principle, deep content, and configuration tasks.</p>
 
       <div class="callout">
         <p class="callout-title">Pacing</p>
@@ -676,49 +747,55 @@
       </p>
 
       <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-dot gold"></div>
-          <div>
-            <div class="title">Snapshot</div>
-            <div class="desc">
-              A live dashboard showing the last 7 days. System health percentage, daily completion bars,
-              non-negotiable consistency per item, and category breakdown (NNs, habits, tasks). Glance at
-              this anytime to see where you stand.
+      <div class="content-with-screenshot">
+        <div class="content-side">
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-dot gold"></div>
+              <div>
+                <div class="title">Snapshot</div>
+                <div class="desc">
+                  A live dashboard showing the last 7 days. System health percentage, daily completion bars,
+                  non-negotiable consistency per item, and category breakdown (NNs, habits, tasks). Glance at
+                  this anytime to see where you stand.
+                </div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot blue"></div>
+              <div>
+                <div class="title">Weekly Review</div>
+                <div class="desc">
+                  Four structured questions: what worked, where you drifted, one adjustment for next week,
+                  and your single focus. Takes 10 minutes. Do this every Sunday. Your weekly data shows alongside
+                  the questions so you review with evidence, not guesswork.
+                </div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot green"></div>
+              <div>
+                <div class="title">Quarterly Recalibration</div>
+                <div class="desc">
+                  A 5-step guided flow that walks through your direction, non-negotiables, habits, priorities,
+                  and identity. You can keep or rotate each non-negotiable and habit directly — changes apply
+                  immediately. Add new ones using the same form as the System tab. Do this every 3 months.
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="screenshot" style="border: none; padding: 0; background: none;">
-          <img src="images/guide-4-snapshot.png" alt="Reviews snapshot showing system health at 90%">
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-dot blue"></div>
-          <div>
-            <div class="title">Weekly Review</div>
-            <div class="desc">
-              Four structured questions: what worked, where you drifted, one adjustment for next week,
-              and your single focus. Takes 10 minutes. Do this every Sunday. Your weekly data shows alongside
-              the questions so you review with evidence, not guesswork.
-            </div>
+        <div class="screenshot-side">
+          <div class="screenshot" onclick="openLightbox(this)">
+            <img src="images/guide-4-snapshot.png" alt="Reviews snapshot showing system health at 90%">
           </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-dot green"></div>
-          <div>
-            <div class="title">Quarterly Recalibration</div>
-            <div class="desc">
-              A 5-step guided flow that walks through your direction, non-negotiables, habits, priorities,
-              and identity. You can keep or rotate each non-negotiable and habit directly — changes apply
-              immediately. Add new ones using the same form as the System tab. Do this every 3 months.
-            </div>
+          <p class="screenshot-caption">The Snapshot — 7-day system health and category rates.</p>
+          <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
+            <img src="images/guide-5-recal.png" alt="Quarterly recalibration showing habit audit with Keep and Rotate buttons">
           </div>
+          <p class="screenshot-caption">Habit Audit — keep what works, rotate what's stale.</p>
         </div>
-
-        <div class="screenshot" style="border: none; padding: 0; background: none;">
-          <img src="images/guide-5-recal.png" alt="Quarterly recalibration showing habit audit with Keep and Rotate buttons">
-        </div>
-        <p class="screenshot-caption">The Habit Audit step — keep what works, rotate what's stale.</p>
+      </div>
       </div>
     </section>
 
@@ -738,46 +815,50 @@
         Your score earns a tier:
       </p>
 
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-dot" style="background: #B8D4E8;"></div>
-          <div>
-            <div class="title">Diamond — 100</div>
-            <div class="desc">Perfect execution. Every habit, every task, every non-negotiable. No misses.</div>
+      <div class="content-with-screenshot">
+        <div class="content-side">
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-dot" style="background: #B8D4E8;"></div>
+              <div>
+                <div class="title">Diamond — 100</div>
+                <div class="desc">Perfect execution. Every habit, every task, every non-negotiable. No misses.</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot" style="background: #C5A55A;"></div>
+              <div>
+                <div class="title">Gold — 75 to 99</div>
+                <div class="desc">Strong operational month. Consistent execution with minor gaps.</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot" style="background: #A8A8B0;"></div>
+              <div>
+                <div class="title">Silver — 50 to 74</div>
+                <div class="desc">System ran but needs tightening. Review where consistency dropped.</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot" style="background: #B87333;"></div>
+              <div>
+                <div class="title">Bronze — below 50</div>
+                <div class="desc">Significant drift. Revisit your non-negotiables and daily structure.</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-dot" style="background: #C5A55A;"></div>
-          <div>
-            <div class="title">Gold — 75 to 99</div>
-            <div class="desc">Strong operational month. Consistent execution with minor gaps.</div>
+        <div class="screenshot-side">
+          <div class="screenshot" onclick="openLightbox(this)">
+            <img src="images/guide-6a-achievements.png" alt="Achievements tab showing monthly reports with Gold and Bronze tiers">
           </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-dot" style="background: #A8A8B0;"></div>
-          <div>
-            <div class="title">Silver — 50 to 74</div>
-            <div class="desc">System ran but needs tightening. Review where consistency dropped.</div>
+          <p class="screenshot-caption">Monthly report history — scores, tiers, and progress.</p>
+          <div class="screenshot" onclick="openLightbox(this)" style="margin-top: 1rem;">
+            <img src="images/guide-6b-report.png" alt="Expanded System Report showing Gold tier with 89 score">
           </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-dot" style="background: #B87333;"></div>
-          <div>
-            <div class="title">Bronze — below 50</div>
-            <div class="desc">Significant drift. Revisit your non-negotiables and daily structure.</div>
-          </div>
+          <p class="screenshot-caption">Expanded report — breakdown, stats, and personal highlight.</p>
         </div>
       </div>
-
-      <div class="screenshot">
-        <img src="images/guide-6a-achievements.png" alt="Achievements tab showing monthly reports with Gold and Bronze tiers">
-      </div>
-      <p class="screenshot-caption">Your monthly report history — scores, tiers, and month-over-month progress.</p>
-
-      <div class="screenshot">
-        <img src="images/guide-6b-report.png" alt="Expanded System Report showing Gold tier with 89 score">
-      </div>
-      <p class="screenshot-caption">An expanded System Report — performance breakdown, stats, and personal highlight.</p>
 
       <div class="callout">
         <p class="callout-title">Minimums</p>
@@ -844,7 +925,7 @@
         </div>
       </div>
 
-      <div class="screenshot">
+      <div class="screenshot" onclick="openLightbox(this)">
         <img src="images/guide-7-system.png" alt="System tab showing documents, non-negotiables, and habits sections">
       </div>
       <p class="screenshot-caption">The System tab — your documents, non-negotiables, and habits in one configuration panel.</p>
@@ -917,5 +998,29 @@
     </footer>
 
   </div>
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-hint">Click anywhere to close</span>
+  </div>
+
+  <script>
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      if (!img) return;
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
