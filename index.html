@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Guide — Structured Achievement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       STRUCTURED ACHIEVEMENT — APP GUIDE
+       Matches the SA design system exactly
+       ======================================== */
+
+    :root {
+      --bg-deep: #0D0D0F;
+      --bg: #131316;
+      --bg-warm: #1A1A1E;
+      --bg-lift: #222226;
+      --bg-card: #1E1E22;
+      --cream: #F2EDE4;
+      --cream-soft: #D8D2C7;
+      --cream-muted: #A69F93;
+      --cream-faint: #6B665D;
+      --gold: #C5A55A;
+      --gold-light: #D4BA78;
+      --gold-deep: #A68B3C;
+      --gold-soft: rgba(197, 165, 90, 0.06);
+      --gold-border: rgba(197, 165, 90, 0.20);
+      --green: #6ECB8B;
+      --green-soft: rgba(110, 203, 139, 0.10);
+      --blue: #6DB5F5;
+      --blue-soft: rgba(109, 181, 245, 0.14);
+      --border: rgba(197, 165, 90, 0.08);
+      --border-light: rgba(197, 165, 90, 0.12);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Atmospheric warm glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 90% 70% at 15% 5%, rgba(197, 165, 90, 0.10), transparent 55%),
+        radial-gradient(ellipse 70% 90% at 85% 95%, rgba(166, 139, 60, 0.06), transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .guide-container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Header ── */
+
+    .guide-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .guide-header .label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .guide-header h1 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .guide-header .subtitle {
+      font-size: 0.95rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Table of Contents ── */
+
+    .toc {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .toc-title {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      margin-bottom: 1rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .toc-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .toc-num {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      width: 1.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .toc-list a {
+      color: var(--cream-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .toc-list a:hover {
+      color: var(--gold);
+    }
+
+    /* ── Sections ── */
+
+    .guide-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .guide-section h2 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .guide-section p {
+      font-size: 0.92rem;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .guide-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Feature blocks ── */
+
+    .feature-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .feature-item {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      transition: border-color 0.2s;
+    }
+
+    .feature-item:hover {
+      border-color: var(--gold-border);
+    }
+
+    .feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .feature-dot.gold { background: var(--gold); }
+    .feature-dot.blue { background: var(--blue); }
+    .feature-dot.green { background: var(--green); }
+
+    .feature-item .title {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-item .desc {
+      font-size: 0.82rem;
+      color: var(--cream-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Screenshot placeholder ── */
+
+    .screenshot {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screenshot img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .screenshot .placeholder {
+      color: var(--cream-faint);
+      font-size: 0.75rem;
+      font-style: italic;
+      padding: 3rem 1rem;
+    }
+
+    .screenshot-caption {
+      font-size: 0.72rem;
+      color: var(--cream-faint);
+      text-align: center;
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* ── Step lists ── */
+
+    .step-list {
+      list-style: none;
+      counter-reset: steps;
+      margin-top: 1rem;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--cream-soft);
+      line-height: 1.6;
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      min-width: 1.25rem;
+      text-align: center;
+      flex-shrink: 0;
+      margin-top: -1px;
+    }
+
+    /* ── Callout boxes ── */
+
+    .callout {
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 1.1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout .callout-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout p {
+      font-size: 0.85rem;
+      color: var(--cream-soft);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    /* ── Rhythm section ── */
+
+    .rhythm-block {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 0.75rem 0;
+    }
+
+    .rhythm-block .time {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .rhythm-block .action {
+      font-size: 0.88rem;
+      color: var(--cream);
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .rhythm-block .detail {
+      font-size: 0.82rem;
+      color: var(--cream-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Dividers ── */
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3.5rem 0;
+    }
+
+    /* ── Footer ── */
+
+    .guide-footer {
+      text-align: center;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .guide-footer p {
+      font-size: 0.8rem;
+      color: var(--cream-faint);
+    }
+
+    .guide-footer .brand {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--cream-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Tab indicator pills ── */
+
+    .tab-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-lift);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--cream-soft);
+      vertical-align: middle;
+    }
+
+    .tab-indicator .icon {
+      font-size: 0.7rem;
+    }
+
+    /* ── Responsive ── */
+
+    @media (max-width: 640px) {
+      .guide-container {
+        padding: 2rem 1.25rem 4rem;
+      }
+
+      .guide-header h1 {
+        font-size: 1.9rem;
+      }
+
+      .guide-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .toc {
+        padding: 1.25rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="guide-container">
+
+    <!-- ═══════════ HEADER ═══════════ -->
+
+    <header class="guide-header">
+      <p class="label">Reference Guide</p>
+      <h1>Your Operating System</h1>
+      <p class="subtitle">
+        Everything you need to know about the Structured Achievement app.
+        How each section works, what to do daily, and how the system runs after installation.
+      </p>
+    </header>
+
+    <!-- ═══════════ TABLE OF CONTENTS ═══════════ -->
+
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol class="toc-list">
+        <li><span class="toc-num">1</span><a href="#overview">How the app works</a></li>
+        <li><span class="toc-num">2</span><a href="#today">Today — your daily execution surface</a></li>
+        <li><span class="toc-num">3</span><a href="#installation">Installation — the 21-day corridor</a></li>
+        <li><span class="toc-num">4</span><a href="#reviews">Reviews — weekly and quarterly</a></li>
+        <li><span class="toc-num">5</span><a href="#achievements">Achievements — monthly system reports</a></li>
+        <li><span class="toc-num">6</span><a href="#system">System — your operating documents</a></li>
+        <li><span class="toc-num">7</span><a href="#daily-rhythm">The daily rhythm</a></li>
+      </ol>
+    </nav>
+
+    <!-- ═══════════ SECTION 1: OVERVIEW ═══════════ -->
+
+    <section id="overview" class="guide-section">
+      <p class="section-label">Section 1</p>
+      <h2>How the App Works</h2>
+      <p>
+        The Structured Achievement app is where you run your system. The 21-day course installs
+        your operating system — direction, habits, non-negotiables, priorities, identity. The app
+        is where you execute it, every day, after installation is complete.
+      </p>
+      <p>
+        The app has five tabs. Each one serves a specific function in your operating system.
+        Nothing extra, nothing decorative. Every screen exists to keep you operational.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Today</div>
+            <div class="desc">Your daily execution surface. Non-negotiables, habits, tasks, journal. Open it, execute, close it.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Installation</div>
+            <div class="desc">The 21-day lesson corridor. One day at a time, with a lesson tab and a journal tab for each.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot blue"></div>
+          <div>
+            <div class="title">Reviews</div>
+            <div class="desc">Weekly snapshot of your data. Quarterly recalibration to rotate habits, update priorities, and realign your direction.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot green"></div>
+          <div>
+            <div class="title">Achievements</div>
+            <div class="desc">Monthly System Reports. Your score, tier, and operational history — measured and recorded.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">System</div>
+            <div class="desc">Your living documents. Direction statement, identity, priorities, decision framework, operating manual. Plus your non-negotiables and habits.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 2: TODAY ═══════════ -->
+
+    <section id="today" class="guide-section">
+      <p class="section-label">Section 2</p>
+      <h2>Today — Your Daily Execution Surface</h2>
+      <p>
+        This is the tab you open every morning and every evening. It shows today's date, your
+        direction statement at the top, and three sections: non-negotiables, keystone habits,
+        and daily tasks.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Non-Negotiables</div>
+            <div class="desc">
+              Your core daily commitments — the things you do regardless of how you feel.
+              These show up every day. Tap to check them off. If you see a zero, the day is incomplete.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot blue"></div>
+          <div>
+            <div class="title">Keystone Habits</div>
+            <div class="desc">
+              Recurring behaviors tied to specific days of the week. They only appear on the days
+              you configured them for. Tap to complete.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot green"></div>
+          <div>
+            <div class="title">Daily Tasks</div>
+            <div class="desc">
+              One-off tasks for today. Add them the night before or in the morning. Tap to complete,
+              swipe or delete when done. These are your tactical execution items — what specifically
+              needs to happen today.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="images/guide-1-today.png" alt="Today tab showing non-negotiables, keystone habits, and daily tasks">
+      </div>
+      <p class="screenshot-caption">The Today tab — your daily execution surface with direction statement, non-negotiables, and habits.</p>
+
+      <div class="callout">
+        <p class="callout-title">How to use it</p>
+        <p>
+          Morning: open the Today tab. See your non-negotiables, habits, and tasks. Execute them
+          throughout the day, checking each off as you go. Evening: add tomorrow's tasks. Close the app.
+          That's the entire daily interaction — under two minutes.
+        </p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 3: INSTALLATION ═══════════ -->
+
+    <section id="installation" class="guide-section">
+      <p class="section-label">Section 3</p>
+      <h2>Installation — The 21-Day Corridor</h2>
+      <p>
+        The Installation tab contains all 21 days of the course. Each day appears as a numbered card
+        in a grid, organized by phase: Stabilize (Days 1–7), Reconstruct (Days 8–14), and Install
+        (Days 15–21). Days 7, 14, and 21 are review days marked with a dashed border.
+      </p>
+
+      <div class="screenshot">
+        <img src="images/guide-2-grid.png" alt="Installation tab showing the 21-day grid with phase colors">
+      </div>
+      <p class="screenshot-caption">The Installation tab — 21 days across three phases, with progress tracking and stats.</p>
+
+      <p>
+        Click any day to open it. Each day has two tabs:
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Lesson</div>
+            <div class="desc">
+              The day's content — a principle, deep explanation, and configuration tasks. Read it fully.
+              The configuration tasks at the end are not optional — they are what installs the system component.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Journal</div>
+            <div class="desc">
+              Structured prompts specific to that day. Your answers here are how you internalize and apply
+              the lesson to your life. Complete the journal before moving to the next day.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="images/guide-3-lesson.png" alt="Day 1 lesson showing the Law of Cause and Effect">
+      </div>
+      <p class="screenshot-caption">A lesson view — Day 1's principle, deep content, and configuration tasks.</p>
+
+      <div class="callout">
+        <p class="callout-title">Pacing</p>
+        <p>
+          One day per day. Do not skip ahead. Each lesson builds on the previous one. Rushing through
+          three days in one sitting installs nothing — it just creates the illusion of progress.
+          The system needs time to integrate. Respect the sequence.
+        </p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 4: REVIEWS ═══════════ -->
+
+    <section id="reviews" class="guide-section">
+      <p class="section-label">Section 4</p>
+      <h2>Reviews — Weekly and Quarterly</h2>
+      <p>
+        The Reviews tab has three sub-tabs: Snapshot, Weekly, and Quarterly. This is where you assess
+        how your system is running and make adjustments.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Snapshot</div>
+            <div class="desc">
+              A live dashboard showing the last 7 days. System health percentage, daily completion bars,
+              non-negotiable consistency per item, and category breakdown (NNs, habits, tasks). Glance at
+              this anytime to see where you stand.
+            </div>
+          </div>
+        </div>
+
+        <div class="screenshot" style="border: none; padding: 0; background: none;">
+          <img src="images/guide-4-snapshot.png" alt="Reviews snapshot showing system health at 90%">
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-dot blue"></div>
+          <div>
+            <div class="title">Weekly Review</div>
+            <div class="desc">
+              Four structured questions: what worked, where you drifted, one adjustment for next week,
+              and your single focus. Takes 10 minutes. Do this every Sunday. Your weekly data shows alongside
+              the questions so you review with evidence, not guesswork.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot green"></div>
+          <div>
+            <div class="title">Quarterly Recalibration</div>
+            <div class="desc">
+              A 5-step guided flow that walks through your direction, non-negotiables, habits, priorities,
+              and identity. You can keep or rotate each non-negotiable and habit directly — changes apply
+              immediately. Add new ones using the same form as the System tab. Do this every 3 months.
+            </div>
+          </div>
+        </div>
+
+        <div class="screenshot" style="border: none; padding: 0; background: none;">
+          <img src="images/guide-5-recal.png" alt="Quarterly recalibration showing habit audit with Keep and Rotate buttons">
+        </div>
+        <p class="screenshot-caption">The Habit Audit step — keep what works, rotate what's stale.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 5: ACHIEVEMENTS ═══════════ -->
+
+    <section id="achievements" class="guide-section">
+      <p class="section-label">Section 5</p>
+      <h2>Achievements — Monthly System Reports</h2>
+      <p>
+        At the end of each month, you generate a System Report — a scored summary of how your
+        system performed. The report calculates a weighted score based on three categories:
+        habit completion (40%), task completion (35%), and non-negotiable completion (25%).
+      </p>
+      <p>
+        Your score earns a tier:
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot" style="background: #B8D4E8;"></div>
+          <div>
+            <div class="title">Diamond — 100</div>
+            <div class="desc">Perfect execution. Every habit, every task, every non-negotiable. No misses.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot" style="background: #C5A55A;"></div>
+          <div>
+            <div class="title">Gold — 75 to 99</div>
+            <div class="desc">Strong operational month. Consistent execution with minor gaps.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot" style="background: #A8A8B0;"></div>
+          <div>
+            <div class="title">Silver — 50 to 74</div>
+            <div class="desc">System ran but needs tightening. Review where consistency dropped.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot" style="background: #B87333;"></div>
+          <div>
+            <div class="title">Bronze — below 50</div>
+            <div class="desc">Significant drift. Revisit your non-negotiables and daily structure.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="images/guide-6a-achievements.png" alt="Achievements tab showing monthly reports with Gold and Bronze tiers">
+      </div>
+      <p class="screenshot-caption">Your monthly report history — scores, tiers, and month-over-month progress.</p>
+
+      <div class="screenshot">
+        <img src="images/guide-6b-report.png" alt="Expanded System Report showing Gold tier with 89 score">
+      </div>
+      <p class="screenshot-caption">An expanded System Report — performance breakdown, stats, and personal highlight.</p>
+
+      <div class="callout">
+        <p class="callout-title">Minimums</p>
+        <p>
+          To earn above Gold, your system must meet minimum thresholds: at least 3 active habits,
+          an average of 3 tasks per day, and at least 2 non-negotiables. If you're below these minimums,
+          your score caps at 75 regardless of completion rates. This prevents gaming the score with
+          a single habit and one task.
+        </p>
+      </div>
+
+      <p>
+        If you forget to generate a report before the month ends, the app automatically creates it
+        for you when you next open the Achievements tab. No data is lost.
+      </p>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 6: SYSTEM ═══════════ -->
+
+    <section id="system" class="guide-section">
+      <p class="section-label">Section 6</p>
+      <h2>System — Your Operating Documents</h2>
+      <p>
+        The System tab is your operating system's configuration panel. It has three sections,
+        all of which can be open simultaneously.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">System Documents</div>
+            <div class="desc">
+              Six living documents built during installation: Direction Statement, Identity Statement,
+              Priority Stack, Decision Framework, Failure Protocol, and Operating Manual. Each one
+              corresponds to a specific lesson day. Click to view, click the pencil to edit. Update
+              these during quarterly recalibrations as your system evolves.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot gold"></div>
+          <div>
+            <div class="title">Non-Negotiables</div>
+            <div class="desc">
+              Your daily commitments. Add new ones with the "Add non-negotiable" button — type the title
+              and hit Add. Delete by hovering over any item and clicking the trash icon. These appear
+              on the Today tab every day.
+            </div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot blue"></div>
+          <div>
+            <div class="title">Keystone Habits</div>
+            <div class="desc">
+              Recurring habits with day-of-week and time configuration. Click "Add keystone habit" to
+              create one — set the name, time, and which days it should appear. These show up on the
+              Today tab only on their scheduled days.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot">
+        <img src="images/guide-7-system.png" alt="System tab showing documents, non-negotiables, and habits sections">
+      </div>
+      <p class="screenshot-caption">The System tab — your documents, non-negotiables, and habits in one configuration panel.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════ SECTION 7: DAILY RHYTHM ═══════════ -->
+
+    <section id="daily-rhythm" class="guide-section">
+      <p class="section-label">Section 7</p>
+      <h2>The Daily Rhythm</h2>
+      <p>
+        This is the operational loop that makes the system work. Two touchpoints per day,
+        under two minutes each. Everything else runs in the background.
+      </p>
+
+      <div class="rhythm-block">
+        <div class="time">Morning — 60 seconds</div>
+        <div class="action">Open the Today tab.</div>
+        <div class="detail">
+          See your non-negotiables, habits scheduled for today, and any tasks you added last night.
+          This is your operating brief. You now know exactly what today requires. Start executing.
+        </div>
+      </div>
+
+      <div class="rhythm-block">
+        <div class="time">Throughout the day</div>
+        <div class="action">Check items off as you complete them.</div>
+        <div class="detail">
+          Tap each non-negotiable, habit, and task as you finish it. This takes seconds.
+          The completion data feeds your weekly snapshot, monthly reports, and quarterly recalibrations.
+        </div>
+      </div>
+
+      <div class="rhythm-block">
+        <div class="time">Evening — 60 seconds</div>
+        <div class="action">Plan tomorrow.</div>
+        <div class="detail">
+          Add tomorrow's tasks. Review if anything was left incomplete today — if it was, decide whether
+          it rolls to tomorrow or gets dropped. Close the app. You're done.
+        </div>
+      </div>
+
+      <div class="rhythm-block">
+        <div class="time">Sunday — 10 minutes</div>
+        <div class="action">Weekly review.</div>
+        <div class="detail">
+          Open the Reviews tab. Check your snapshot data. Complete the four weekly review questions.
+          Save. This is your system maintenance cycle — a structured check-in that prevents drift.
+        </div>
+      </div>
+
+      <div class="rhythm-block">
+        <div class="time">Every 3 months — 25 minutes</div>
+        <div class="action">Quarterly recalibration.</div>
+        <div class="detail">
+          Open the Quarterly tab in Reviews. Walk through all five steps: direction, non-negotiables,
+          habits, priorities, identity. Rotate what's stale. Add what's missing. Realign with where you
+          are now, not where you were three months ago.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+
+    <footer class="guide-footer">
+      <p class="brand">Structured Achievement</p>
+      <p>The system runs. You maintain it.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
